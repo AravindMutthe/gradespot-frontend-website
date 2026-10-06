@@ -349,6 +349,17 @@ export const SERVICES: Service[] = [
   },
 ];
 
+export interface InstituteProduct {
+  slug: string;
+  name: string;
+  tag: string;
+  description: string;
+  points: string[];
+}
+
+/* Institute automation products (Axon) — populated when the product line launches. */
+export const PRODUCTS: InstituteProduct[] = [];
+
 export interface Faq {
   q: string;
   a: string;
@@ -516,14 +527,20 @@ export const STATS: Stat[] = [
 export const CONTACT = {
   phone: "+91 91826 54056",
   phoneHref: "tel:+919182654056",
+  phone2: "+91 88866 60597",
+  phone2Href: "tel:+918886660597",
   email: "info@gsitssolutions.com",
+  email2: "hr@gsitssolutions.com",
+  whatsapp: "https://wa.me/919182654056",
   hours: "8:00 AM – 9:00 PM",
   address:
     "16-126, 2nd Floor, Near Sai Baba Temple, Road No.1, Sri Krishna Nagar, Dilsukhnagar, Hyderabad, Telangana - 500060",
+  locality: "Dilsukhnagar, Hyderabad 500060",
 } as const;
 
 export const BRAND = {
   name: "GradeSpot IT Solutions",
+  short: "GradeSpot",
   city: "Hyderabad",
   tagline: "Empower Your Business with Top-Notch IT Solutions & Training",
   experience: "9 years of experience",
