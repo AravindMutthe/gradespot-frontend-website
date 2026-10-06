@@ -32,8 +32,8 @@ was verified against (see `package.json` / `package-lock.json`).
 | `next`                | 15.5.27  | React framework — App Router, SSR/RSC, routing, `next build`; also `next/font` for the researched type system |
 | `react`               | 19.2.8   | UI library (required by Next.js 15)                                   |
 | `react-dom`           | 19.2.8   | React DOM rendering (required by Next.js 15)                          |
-| `@carbon/react`       | 1.117.0  | IBM Carbon components — Accordion (FAQs), Button (verify form)        |
-| `@carbon/styles`      | 1.116.0  | Carbon's compiled component stylesheet (`css/styles.css`)             |
+| `@carbon/react`       | 1.117.0  | REMOVED 2026-10-06 — no longer imported; FAQ uses native `details/summary`, verify form uses the researched pill `Button` atom |
+| `@carbon/styles`      | 1.116.0  | REMOVED 2026-10-06 — stylesheet import dropped; it fought the researched design tokens |
 | `@carbon/icons-react` | 11.89.0  | Carbon icons as React SVG components (no CSS, no conflicts)           |
 | `framer-motion`       | 14.0.0   | Entrance/scroll animations (hero audience switch, chat widget)        |
 | `zod`                 | 4.6.5    | Schema validation — shared contracts in `src/lib/contracts.ts`        |
@@ -121,7 +121,7 @@ Follows the Figma component architecture — atoms → molecules → organisms.
 | `StatCounter`  | `StatCounter.tsx`   | Metric box (framer-motion fade on scroll)                    |
 | `ServiceCard`  | `ServiceCard.tsx`   | Service tile with icon, hover arrow                          |
 | `TeamCard`     | `TeamCard.tsx`      | Member card — initials avatar until photos land              |
-| `FaqAccordion` | `FaqAccordion.tsx`  | IBM Carbon `Accordion` — keyboard accessible                 |
+| `FaqAccordion` | `FaqAccordion.tsx`  | Native `details`/`summary` accordion matching the researched sample — keyboard accessible |
 | `WhatsAppDemo` | `WhatsAppDemo.tsx`  | Chat-bubble demo widget — structure only, 2 `TODO` placeholder bubbles |
 | `CtaBand`      | `CtaBand.tsx`       | Dark rounded panel with the single "Get a Callback" CTA |
 
@@ -306,23 +306,17 @@ fills himself.
 
 ---
 
-## 5. Carbon + Tailwind coexistence
+## 5. Carbon icons + Tailwind (icons only)
 
-Configured in **`src/app/layout.tsx`**:
+2026-10-06: the Carbon **component** packages were removed — `@carbon/styles`
+fought the researched design tokens and `@carbon/react` had zero remaining
+imports (FAQ moved to native `details`/`summary`, verify form to the pill
+`Button` atom). What remains is **`@carbon/icons-react`** only:
 
-1. `./globals.css` (Tailwind v4: preflight + utilities + `@theme` tokens) is
-   imported **first**.
-2. `@carbon/styles/css/styles.css` (full Carbon component stylesheet) is
-   imported **second**, so Carbon's component styles win any cascade ties.
-
-Why this is safe:
-
-- Carbon uses BEM-namespaced classes (`.cds--*`) — they never collide with
-  Tailwind utilities.
-- Icons come from `@carbon/icons-react` as React SVG components; they ship
-  **no CSS at all**, so there is nothing to collide.
-- Rule of thumb: use **Tailwind utilities for layout/spacing/brand color**,
-  and **Carbon components for complex UI** (forms, tables, accordions,
+- Icons ship as React SVG components with **no CSS at all** — nothing to
+  collide with Tailwind v4 preflight/utilities or the `@theme` tokens.
+- Rule of thumb: **Tailwind utilities for everything visual** (layout, spacing,
+  brand color, buttons, forms); **Carbon icons** wherever an icon is needed.
   modals). Do not fight Carbon component internals with `!important`.
 
 ---
