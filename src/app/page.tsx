@@ -15,7 +15,7 @@ import {
 } from "@/components/molecules";
 import { Button, Chip } from "@/components/atoms";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
-import { FAQS, COURSES, SERVICES, PRODUCTS } from "@/lib/mock-data";
+import { FAQS, COURSES, SERVICES, PRODUCTS, STATS, CATEGORY_LABELS } from "@/lib/mock-data";
 import { CheckmarkFilled } from "@carbon/icons-react";
 
 export const metadata: Metadata = {
@@ -78,6 +78,39 @@ export default function Home() {
       <Navbar />
       <HomeHero />
 
+      {/* Stats strip — landing-page pattern band. TODO: your real numbers. */}
+      <section className="border-y border-line bg-bg2 py-7">
+        <div className="container-brand grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
+          {STATS.length > 0
+            ? STATS.map((s) => (
+                <div
+                  key={s.label}
+                  className="rounded-2xl border border-line bg-panel p-4"
+                >
+                  <b className="font-display block text-[22px] tracking-[-0.02em]">
+                    {s.value}
+                  </b>
+                  <span className="mt-0.5 block text-[13px] text-ink2">
+                    {s.label}
+                  </span>
+                </div>
+              ))
+            : [1, 2, 3, 4].map((i) => (
+                <div
+                  key={i}
+                  className="rounded-2xl border border-line bg-panel p-4"
+                >
+                  <b className="font-display block text-[22px] tracking-[-0.02em] text-ink3">
+                    TODO: stat
+                  </b>
+                  <span className="mt-0.5 block text-[13px] text-ink3">
+                    TODO: what this number proves
+                  </span>
+                </div>
+              ))}
+        </div>
+      </section>
+
       {/* Courses */}
       <section className="py-14">
         <div className="container-brand">
@@ -88,7 +121,22 @@ export default function Home() {
           <p className="mt-3 max-w-[720px] text-[17px] text-ink2">
             TODO: one or two sentences introducing your course lineup.
           </p>
-          <div className="mt-7 grid gap-[18px] md:grid-cols-2 lg:grid-cols-3">
+          {/* Category filter chips — landing-page pattern. TODO: wire to real filtering. */}
+          <div className="mb-[18px] mt-6 flex flex-wrap gap-2">
+            {["All", ...Object.values(CATEGORY_LABELS)].map((label, i) => (
+              <span
+                key={label}
+                className={`inline-flex items-center rounded-button border px-3.5 py-2 text-[13.5px] font-bold ${
+                  i === 0
+                    ? "border-ink bg-ink text-white"
+                    : "border-line bg-panel text-ink2"
+                }`}
+              >
+                {label}
+              </span>
+            ))}
+          </div>
+          <div className="grid gap-[18px] md:grid-cols-2 lg:grid-cols-3">
             {COURSES.map((c) => (
               <div
                 key={c.slug}

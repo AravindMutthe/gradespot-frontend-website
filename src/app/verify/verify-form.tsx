@@ -2,13 +2,12 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Button as CarbonButton } from "@carbon/react";
 import { Search } from "@carbon/icons-react";
 import {
   CertificateLookupSchema,
   type CertificateLookup,
 } from "@/lib/contracts";
-import { Input } from "@/components/atoms";
+import { Input, Button } from "@/components/atoms";
 
 /**
  * Certificate verification lookup UI.
@@ -53,9 +52,10 @@ export function VerifyForm() {
           {...register("serial")}
         />
         <div className="flex items-end">
-          <CarbonButton type="submit" renderIcon={Search}>
+          <Button type="submit">
+            <Search size={16} />
             Verify
-          </CarbonButton>
+          </Button>
         </div>
       </form>
 

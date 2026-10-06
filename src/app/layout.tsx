@@ -2,12 +2,6 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Archivo, Manrope, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
-// IBM Carbon Design System — full component stylesheet.
-// Imported AFTER globals.css (Tailwind) so Carbon's BEM-namespaced
-// component classes (.cds--*) win any cascade ties. Carbon class names
-// never collide with Tailwind utilities; icons come from
-// @carbon/icons-react as React SVG components (no CSS involved).
-import "@carbon/styles/css/styles.css";
 import { CallbackModalProvider } from "@/components/organisms/CallbackModal";
 
 /* Researched type system (Static_Website.html / Sample_Landing_Page_2.html):

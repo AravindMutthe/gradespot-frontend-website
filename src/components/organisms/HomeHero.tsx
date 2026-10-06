@@ -80,6 +80,12 @@ export function HomeHero() {
   return (
     <section className="bg-[radial-gradient(900px_420px_at_85%_-10%,color-mix(in_srgb,var(--brand)_13%,transparent),transparent_60%),var(--bg)] pb-[50px] pt-[58px]">
       <div className="container-brand">
+        {/* Status pill — landing-page pattern. TODO: your live status line. */}
+        <p className="mb-6 inline-flex items-center gap-2 rounded-button border border-line bg-panel px-3 py-[7px] text-[13px] font-bold">
+          <span aria-hidden className="h-2 w-2 rounded-full bg-[#22c55e]" />
+          TODO: status line — e.g. admissions open, new batch, etc.
+        </p>
+
         <div
           role="tablist"
           aria-label="Choose your audience"

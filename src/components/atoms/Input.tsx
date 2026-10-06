@@ -20,10 +20,10 @@ export function Input({ id, label, error, className = "", ...rest }: InputProps)
         id={id}
         aria-invalid={!!error}
         aria-describedby={error ? `${id}-error` : undefined}
-        className={`w-full rounded-button border bg-panel px-4 py-2.5 text-ink placeholder:text-ink3/70 focus:outline-none focus:ring-2 ${
+        className={`w-full rounded-[10px] border-[1.5px] bg-bg px-[13px] py-[11px] text-[15px] text-ink placeholder:text-ink3 focus:outline-none ${
           error
-            ? "border-red-500 focus:ring-red-200"
-            : "border-line/40 focus:border-brand focus:ring-brand/20"
+            ? "border-red-500"
+            : "border-line focus:border-brand"
         }`}
         {...rest}
       />

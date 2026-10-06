@@ -28,6 +28,23 @@ export default function TrainingsPage() {
       </div>
 
       <section className="py-[26px]">
+        <div className="container-brand">
+          {/* Category filter chips — landing-page pattern. TODO: wire to real filtering. */}
+          <div className="mb-[18px] flex flex-wrap gap-2">
+            {["All", ...Object.values(CATEGORY_LABELS)].map((label, i) => (
+              <span
+                key={label}
+                className={`inline-flex items-center rounded-button border px-3.5 py-2 text-[13.5px] font-bold ${
+                  i === 0
+                    ? "border-ink bg-ink text-white"
+                    : "border-line bg-panel text-ink2"
+                }`}
+              >
+                {label}
+              </span>
+            ))}
+          </div>
+        </div>
         <div className="container-brand grid gap-[18px] md:grid-cols-2 lg:grid-cols-3">
           {COURSES.map((c) => (
             <div
