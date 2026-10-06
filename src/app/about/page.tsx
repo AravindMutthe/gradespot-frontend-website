@@ -11,7 +11,6 @@ import { TeamCard } from "@/components/molecules";
 import { Button } from "@/components/atoms";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
 import { TEAM, CONTACT, WHY_CHOOSE, ABOUT } from "@/lib/mock-data";
-import { CheckmarkFilled } from "@carbon/icons-react";
 
 export const metadata: Metadata = {
   title: "About Us — GradeSpot IT Solutions",
