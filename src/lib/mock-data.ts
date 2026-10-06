@@ -31,7 +31,6 @@ export interface Course {
   mode: string;
   level: string;
   certification: string;
-  highlights: string[];
 }
 
 /* Real GradeSpot course catalog (Dilsukhnagar, Hyderabad) — sourced from gsitssolutions.com. */
