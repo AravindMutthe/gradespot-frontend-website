@@ -7,7 +7,7 @@ import { COURSES, CATEGORY_LABELS } from "@/lib/mock-data";
 export const metadata: Metadata = {
   title: "Courses & Fees — GradeSpot IT Solutions",
   description:
-    "Six job-ready courses: CEH, SOC Analyst, CCNA, AWS + DevOps, Web Development, Digital Marketing. Syllabus, trainer and fee on every page — Hyderabad classroom + live online.",
+    "GradeSpot courses: syllabus, trainer and fee on every page — Hyderabad classroom + live online.",
 };
 
 export default function TrainingsPage() {
@@ -22,9 +22,8 @@ export default function TrainingsPage() {
         </p>
         <h1>Courses &amp; Fees</h1>
         <p className="mt-2.5 max-w-[720px] text-[17px] text-ink2">
-          Six course pages under one flat <span className="mono">/trainings/…</span> structure
-          — within three clicks of home, each with its own syllabus, trainer
-          and price.
+          TODO: one or two sentences introducing your courses. Each course
+          gets its own page with syllabus, trainer and price.
         </p>
       </div>
 

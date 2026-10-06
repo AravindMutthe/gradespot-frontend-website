@@ -15,8 +15,7 @@ import { CheckmarkFilled } from "@carbon/icons-react";
 
 export const metadata: Metadata = {
   title: "About Us — GradeSpot IT Solutions",
-  description:
-    "About GradeSpot IT Solutions: cybersecurity training institute and IT services company in Hyderabad — fees in the open, verifiable certificates.",
+  description: "About GradeSpot IT Solutions, Hyderabad.",
 };
 
 export default function AboutPage() {
@@ -31,9 +30,7 @@ export default function AboutPage() {
         </p>
         <h1>About GradeSpot</h1>
         <p className="mt-2.5 max-w-[720px] text-[17px] text-ink2">
-          A Hyderabad training institute and IT solutions company with one
-          unusual habit: we build the tools we wish existed, use them
-          ourselves, then sell them to other institutes.
+          TODO: one or two sentences about who you are and what you do.
         </p>
       </div>
 
@@ -44,10 +41,10 @@ export default function AboutPage() {
               <h3 className="text-[19px] font-bold">Why choose us</h3>
               <ul className="mt-3.5">
                 {[
-                  "Fees printed on the course page at launch — no callback hostage pricing",
-                  "Certificates anyone can verify online",
-                  "Trainers who also do the services work",
-                  "Every product demoed live on our own institute",
+                  "TODO: reason one",
+                  "TODO: reason two",
+                  "TODO: reason three",
+                  "TODO: reason four",
                 ].map((t) => (
                   <li
                     key={t}
@@ -65,9 +62,8 @@ export default function AboutPage() {
             <div className="rounded-card border border-line bg-panel p-[22px]">
               <h3 className="text-[19px] font-bold">Student certifications</h3>
               <p className="mt-2 text-[15px] text-ink2">
-                Students finish with a verifiable certificate and a public
-                record on the Student Certifications page — social proof that
-                employers can check, not just believe.
+                TODO: one or two sentences about your certificates and how
+                they are verified.
               </p>
               <div className="mt-4">
                 <Link href="/verify">
@@ -80,11 +76,10 @@ export default function AboutPage() {
             <div className="rounded-card border border-line bg-panel p-[22px]">
               <h3 className="text-[19px] font-bold">Team</h3>
               <p className="mt-2 text-[15px] text-ink2">
-                Led by Founder &amp; MD Nikhil Duth D and the GradeSpot
-                training and engineering team in Dilsukhnagar, Hyderabad.
+                TODO: one or two sentences about your team.
               </p>
               <p className="mt-2.5 text-[12.5px] text-ink3">
-                Full team page with trainer profiles ships in the design phase.
+                TODO: trainer profiles go here.
               </p>
             </div>
           </div>

@@ -3,12 +3,10 @@ import { z } from "zod";
 /* ---------------------------------------------------------------------------
  * Shared contracts — single source of truth for data shapes, used by the
  * frontend forms now and the API routes / backend later (contract-first).
- *
- * Course slugs follow the RESEARCHED 6-course lineup (mock-data.ts).
  * ------------------------------------------------------------------------- */
 
 /** Lead capture — used by the contact form today, /api/leads tomorrow.
- * courseInterest values are the researched GradeSpot course slugs. */
+ * courseInterest is free text until the course catalog is finalized. */
 export const LeadSubmissionSchema = z.object({
   fullName: z.string().trim().min(2, "Please enter your full name"),
   phone: z
@@ -16,36 +14,20 @@ export const LeadSubmissionSchema = z.object({
     .trim()
     .regex(/^[6-9]\d{9}$/, "Enter a valid 10-digit Indian mobile number"),
   email: z.string().trim().email("Enter a valid email address"),
-  courseInterest: z.enum([
-    "ceh",
-    "soc-analyst",
-    "ccna",
-    "aws-devops",
-    "web-development",
-    "digital-marketing",
-  ]),
+  courseInterest: z
+    .string()
+    .trim()
+    .min(1, "Please tell us what you're interested in"),
   mode: z.enum(["offline", "online"]),
 });
 export type LeadSubmission = z.infer<typeof LeadSubmissionSchema>;
-
-export const COURSE_INTEREST_LABELS: Record<
-  LeadSubmission["courseInterest"],
-  string
-> = {
-  ceh: "Certified Ethical Hacker (CEH)",
-  "soc-analyst": "SOC Analyst",
-  ccna: "CCNA — Networking Fundamentals",
-  "aws-devops": "AWS + DevOps",
-  "web-development": "Web Development",
-  "digital-marketing": "Digital Marketing",
-};
 
 export const MODE_LABELS: Record<LeadSubmission["mode"], string> = {
   offline: "Classroom (Hyderabad)",
   online: "Online (live)",
 };
 
-/** "Get a Callback" modal — the single site-wide CTA (researched).
+/** "Get a Callback" modal — the single site-wide CTA.
  * Phone normalization (strip 91/0 prefixes) happens before this schema. */
 export const CallbackRequestSchema = z.object({
   name: z.string().trim().min(2, "Please tell us your name."),
@@ -64,7 +46,7 @@ export const AUDIENCE_LABELS: Record<CallbackRequest["audience"], string> = {
   institute: "Institute owner",
 };
 
-/** Normalize free-typed Indian mobile input to 10 digits (researched rule). */
+/** Normalize free-typed Indian mobile input to 10 digits. */
 export function normalizeIndianMobile(raw: string): string {
   let digits = raw.replace(/\D/g, "");
   if (digits.length === 12 && digits.startsWith("91")) digits = digits.slice(2);

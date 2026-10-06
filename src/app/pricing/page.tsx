@@ -7,41 +7,40 @@ import { COURSES } from "@/lib/mock-data";
 
 export const metadata: Metadata = {
   title: "Pricing — GradeSpot IT Solutions",
-  description:
-    "GradeSpot pricing in the open: published course fees for students, project quotes for businesses, setup + monthly for institutes.",
+  description: "GradeSpot pricing: course fees, project quotes, institute plans.",
 };
 
 const TIERS = [
   {
     chip: "Students",
     title: "Course fees",
-    body: "Every course page carries its fee and installment options. The pattern that works globally: OffSec publishes $2,749/yr for individuals while gating enterprise pricing.",
+    body: "TODO: one or two sentences about how your course pricing works.",
     points: [
-      "Fee per course — on the course page",
-      "Installments available",
-      "No charges beyond the published fee",
+      "TODO: pricing point one",
+      "TODO: pricing point two",
+      "TODO: pricing point three",
     ],
     cta: { label: "Browse Courses", href: "/trainings" as const },
   },
   {
     chip: "Businesses",
     title: "Project quotes",
-    body: "IT services are scoped per project, so pricing is a conversation — the same gate OffSec puts on “Learn Enterprise” (“Connect with sales”).",
+    body: "TODO: one or two sentences about how your services are quoted.",
     points: [
-      "Scope call first, quote second",
-      "Fixed scope, fixed price in writing",
-      "Corporate training quoted per batch",
+      "TODO: quoting point one",
+      "TODO: quoting point two",
+      "TODO: quoting point three",
     ],
     cta: { label: "Request a Quote" },
   },
   {
     chip: "Institutes",
     title: "Setup + monthly",
-    body: "Small paid pilot, then a monthly that only continues while it earns. Draft tiers discussed start in the same ballpark as software-only LMS pricing — final numbers to be confirmed.",
+    body: "TODO: one or two sentences about your institute pricing model.",
     points: [
-      "One-time setup & installation",
-      "Monthly per product, bundle discount",
-      "Cancel when it stops paying for itself",
+      "TODO: pricing point one",
+      "TODO: pricing point two",
+      "TODO: pricing point three",
     ],
     cta: { label: "See the Products", href: "/institutes" as const },
   },
@@ -59,9 +58,8 @@ export default function PricingPage() {
         </p>
         <h1>Pricing, in the open</h1>
         <p className="mt-2.5 max-w-[720px] text-[17px] text-ink2">
-          The researched pricing split: course fees published for students,
-          project quotes for businesses, setup + monthly for institutes.
-          Amounts land here the moment they are confirmed — nothing invented.
+          TODO: one or two sentences about your pricing approach. Amounts
+          land here the moment they are confirmed — nothing invented.
         </p>
       </div>
 

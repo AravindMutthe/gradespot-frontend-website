@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import { CallbackButton } from "@/components/organisms/CallbackModal";
 
-/* CTA band — researched dark rounded panel. One CTA everywhere:
+/* CTA band — dark rounded panel. One CTA everywhere:
  * "Get a Callback". */
 
 export interface CtaBandProps {

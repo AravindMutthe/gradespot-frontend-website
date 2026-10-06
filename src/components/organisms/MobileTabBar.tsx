@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/atoms";
 
-/* Mobile bottom tab bar — researched (India is 80%+ mobile traffic).
+/* Mobile bottom tab bar.
  * Home · Courses · Pricing · Institutes · More. Desktop: hidden.
  * "More" opens a bottom sheet with every page. */
 
@@ -66,7 +66,6 @@ const SHEET_LINKS: { href: string; label: string; url: string }[] = [
   { href: "/resources/blog", label: "Blog", url: "/resources/blog" },
   { href: "/resources/faqs", label: "FAQs", url: "/resources/faqs" },
   { href: "/sitemap", label: "Site Map", url: "/sitemap" },
-  { href: "/research", label: "Research", url: "/research" },
 ];
 
 export function MobileTabBar() {

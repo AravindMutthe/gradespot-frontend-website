@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "GradeSpot IT Solutions: job-ready cybersecurity & IT courses, IT services for businesses, and automation products for institutes — Dilsukhnagar, Hyderabad.",
 };
 
-/* JSON-LD: EducationalOrganization + Course list + Breadcrumb (researched schema stack). */
+/* JSON-LD: EducationalOrganization + Course list + Breadcrumb. */
 function JsonLd() {
   const data = {
     "@context": "https://schema.org",
@@ -83,13 +83,10 @@ export default function Home() {
         <div className="container-brand">
           <p className="kicker">For Students</p>
           <h2 className="mt-2.5 text-[clamp(26px,3.4vw,36px)]">
-            Six courses, one price list
+            Your courses headline here
           </h2>
           <p className="mt-3 max-w-[720px] text-[17px] text-ink2">
-            The approved course lineup. Each course gets its own page with
-            syllabus, trainer, fee and EMI options — the amounts slot in at
-            launch, into a structure search engines and AI answers can
-            actually read.
+            TODO: one or two sentences introducing your course lineup.
           </p>
           <div className="mt-7 grid gap-[18px] md:grid-cols-2 lg:grid-cols-3">
             {COURSES.map((c) => (
@@ -118,13 +115,7 @@ export default function Home() {
             ))}
           </div>
           <p className="mt-3.5 text-[12.5px] text-ink3">
-            Fee slots are marked “to be confirmed” — no invented prices.
-            Structure follows the researched pattern: publish consumer course
-            pricing, gate B2B quotes (
-            <Link href="/research" className="underline underline-offset-2">
-              see evidence
-            </Link>
-            ).
+            TODO: note about how your course pricing works.
           </p>
         </div>
       </section>
@@ -134,12 +125,10 @@ export default function Home() {
         <div className="container-brand">
           <p className="kicker">For Businesses</p>
           <h2 className="mt-2.5 text-[clamp(26px,3.4vw,36px)]">
-            IT services, inside the business track
+            Your services headline here
           </h2>
           <p className="mt-3 max-w-[720px] text-[17px] text-ink2">
-            The Pvt Ltd side — sold to companies, quoted per project. Research
-            pattern (OffSec, verified live): services live inside the business
-            audience track, not as a competing top-level brand.
+            TODO: one or two sentences introducing your IT services.
           </p>
           <div className="mt-7 grid gap-[18px] md:grid-cols-2">
             {SERVICES.map((s) => (
@@ -170,12 +159,10 @@ export default function Home() {
         <div className="container-brand">
           <p className="kicker">For Institutes</p>
           <h2 className="mt-2.5 text-[clamp(26px,3.4vw,36px)]">
-            Built for our own institute first, then for institutes like yours
+            Your institute-products headline here
           </h2>
           <p className="mt-3 max-w-[720px] text-[17px] text-ink2">
-            Three planned products — a bundle nobody in Hyderabad offers
-            today: lead engine + course platform + lab infrastructure,
-            installed by people who run an institute.
+            TODO: one or two sentences introducing your institute products.
           </p>
           <div className="mt-7 grid gap-[18px] md:grid-cols-2 lg:grid-cols-3">
             {PRODUCTS.map((p) => (
@@ -214,26 +201,26 @@ export default function Home() {
       {/* Flywheel */}
       <section className="bg-bg2 py-14">
         <div className="container-brand">
-          <p className="kicker">How the model works</p>
+          <p className="kicker">How it works</p>
           <h2 className="mt-2.5 text-[clamp(26px,3.4vw,36px)]">
-            Three legs, one flywheel
+            Your business-model headline here
           </h2>
           <div className="mt-7 grid gap-[18px] md:grid-cols-3">
             {[
               {
-                chip: "Leg 1 · B2C",
-                t: "Training fees",
-                d: "Per-course fees with installments. GradeSpot is the proof kitchen — the plan is to run each product here before selling it to anyone.",
+                chip: "TODO: pillar one",
+                t: "Your pillar title here",
+                d: "TODO: one or two sentences about this pillar.",
               },
               {
-                chip: "Leg 2 · B2B",
-                t: "IT services",
-                d: "Selective, high-margin project work for businesses — web, security, marketing, corporate training.",
+                chip: "TODO: pillar two",
+                t: "Your pillar title here",
+                d: "TODO: one or two sentences about this pillar.",
               },
               {
-                chip: "Leg 3 · B2B recurring",
-                t: "Institute automation",
-                d: "Setup fee + monthly. The only leg that grows without your hours — and the one the site is built to sell.",
+                chip: "TODO: pillar three",
+                t: "Your pillar title here",
+                d: "TODO: one or two sentences about this pillar.",
               },
             ].map((l) => (
               <div
@@ -248,8 +235,8 @@ export default function Home() {
           </div>
           <div className="mt-[30px]">
             <CtaBand
-              title="Not sure which door is yours?"
-              text="Tell us who you are — student, business, or institute — and we'll call you back with the right next step."
+              title="Your call-to-action headline here"
+              text="TODO: one supporting sentence for the call to action."
             />
           </div>
         </div>
@@ -259,20 +246,18 @@ export default function Home() {
       <section className="py-14">
         <div className="container-brand grid items-center gap-10 lg:grid-cols-2">
           <div>
-            <p className="kicker">Product 1 · Live demo</p>
+            <p className="kicker">TODO: demo kicker</p>
             <h2 className="mt-2.5 text-[clamp(26px,3.4vw,36px)]">
-              The website itself is the demo
+              Your demo headline here
             </h2>
             <p className="mt-3 max-w-[560px] text-[17px] text-ink2">
-              This chat is a prototype of the WhatsApp lead engine&apos;s
-              answers — enquiries answered in seconds, 24×7, with counsellor
-              handoff. Directors: ask us to brand this demo with your courses.
+              TODO: one or two sentences describing what the chat demo shows.
             </p>
             <ul className="mt-5 space-y-2.5">
               {[
-                "No app to install, no account to create",
-                "The same flow we deploy for institutes",
-                "Counsellor handoff with full chat context",
+                "TODO: demo benefit one",
+                "TODO: demo benefit two",
+                "TODO: demo benefit three",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3 text-[15px] text-ink2">
                   <CheckmarkFilled size={20} className="mt-0.5 shrink-0 text-ok" />
@@ -281,7 +266,7 @@ export default function Home() {
               ))}
             </ul>
             <div className="mt-6">
-              <CallbackButton>Book a Walkthrough</CallbackButton>
+              <CallbackButton>TODO: CTA label</CallbackButton>
             </div>
           </div>
           <WhatsAppDemo />
@@ -293,7 +278,7 @@ export default function Home() {
         <div className="container-brand max-w-[820px]">
           <p className="kicker">Questions</p>
           <h2 className="mt-2.5 text-[clamp(26px,3.4vw,36px)]">
-            Asked often, answered straight
+            Your FAQ headline here
           </h2>
           <div className="mt-6">
             <FaqAccordion items={FAQS.slice(0, 5)} />

@@ -11,7 +11,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/batches",
     "/institutes",
     "/pricing",
-    "/research",
     "/sitemap",
     "/resources",
     "/resources/blog",

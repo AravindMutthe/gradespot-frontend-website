@@ -18,12 +18,12 @@ import {
 } from "@/lib/contracts";
 
 /* ---------------------------------------------------------------------------
- * "Get a Callback" — the single site-wide CTA (researched).
+ * "Get a Callback" — the single site-wide CTA.
  *
  * Mount <CallbackModalProvider> once (in layout.tsx); anywhere in the tree,
  * <CallbackButton> opens the modal. The modal collects name, 10-digit Indian
- * mobile, audience and message, validates (Zod + researched phone rule),
- * then copies the enquiry for WhatsApp/email — the researched behavior.
+ * mobile, audience and message, validates (Zod phone rule),
+ * then copies the enquiry for WhatsApp/email.
  * When the Axon lead API gains a callback-shaped endpoint, this is the one
  * place to switch copy-to-clipboard for a POST.
  * ------------------------------------------------------------------------- */

@@ -6,13 +6,17 @@ holds the frontend only; the lead-capture / WhatsApp / automation engine
 (Axon) lives in the separate private repo
 `AravindMutthe/gradespot-backend-axon-api`.
 
-> **Status: researched design system applied (2026-10-06).** The site now
-> implements the design system from Aravind's two researched HTML files
-> (§4 below): orange primary brand, Archivo/Manrope/IBM Plex Mono type,
-> the 6-course researched catalog, and the new `/pricing`, `/research` and
-> `/sitemap` pages. Copy marked `[Pending]` is structurally real but not
-> final — no lorem ipsum. Phase-3 integrations (Supabase, `/api/chat`,
-> lead-pipeline wiring) come next.
+> **Status: design system applied (2026-10-06), content stripped
+> (2026-10-06).** The site implements the design system from Aravind's two
+> researched HTML files (§4 below): orange primary brand,
+> Archivo/Manrope/IBM Plex Mono type, pill buttons, 1180px container. The
+> researched files were used for **structure + design tokens only** — all
+> researched filler content (course catalogs, service lists, product
+> descriptions, FAQs, testimonials, marketing copy) was removed per the
+> owner's direction. Every content list in `src/lib/mock-data.ts` is an
+> empty typed array with a shape comment; page copy is neutral `TODO:`
+> placeholders. He develops his own content. Phase-3 integrations
+> (Supabase, `/api/chat`, lead-pipeline wiring) come next.
 
 ---
 
@@ -72,21 +76,20 @@ Tailwind v4 + CSS.
 
 | Route                        | File                                  | What it renders                                  |
 | ---------------------------- | ------------------------------------- | ------------------------------------------------ |
-| `/`                          | `src/app/page.tsx`                    | Home: split-audience hero, WhatsApp demo, 6 courses, services, products, flywheel, FAQ |
-| `/about`                     | `src/app/about/page.tsx`              | Story, Why Choose Us, certifications, team, contact, testimonials note |
-| `/trainings`                 | `src/app/trainings/page.tsx`          | Course catalog grid — the researched 6 courses   |
+| `/`                          | `src/app/page.tsx`                    | Home: split-audience hero, WhatsApp demo, courses, services, products, model, FAQ (all content `TODO` placeholders) |
+| `/about`                     | `src/app/about/page.tsx`              | About, Why Choose Us, certifications, team, contact, testimonials note (copy `TODO` placeholders) |
+| `/trainings`                 | `src/app/trainings/page.tsx`          | Course catalog grid — renders `COURSES` (currently empty) |
 | `/trainings/[course]`        | `src/app/trainings/[course]/page.tsx` | Course detail — who/outcome/topics, fee slot, Course JSON-LD |
-| `/batches`                   | `src/app/batches/page.tsx`            | Upcoming batches table — dates/timings [Pending] |
-| `/pricing`                   | `src/app/pricing/page.tsx`            | **New.** 3 audience tiers + student fee table (amounts [Pending]) |
-| `/research`                  | `src/app/research/page.tsx`           | **New.** Evidence tables/cards with honesty tags (verified/measured/practitioner/index) |
-| `/sitemap`                   | `src/app/sitemap/page.tsx`            | **New.** Visual site map — page tree + navigation rules |
+| `/batches`                   | `src/app/batches/page.tsx`            | Upcoming batches table — dates/timings `TODO` |
+| `/pricing`                   | `src/app/pricing/page.tsx`            | 3 audience tiers + student fee table (amounts `TODO`) |
+| `/sitemap`                   | `src/app/sitemap/page.tsx`            | Visual site map — page tree + navigation notes (`TODO` descriptions) |
 | `/resources`                 | `src/app/resources/page.tsx`          | Resources hub (Blog / Testimonials / FAQs)       |
 | `/resources/blog`            | `src/app/resources/blog/page.tsx`     | Article list                                     |
 | `/resources/testimonials`    | `src/app/resources/testimonials/page.tsx` | Learner stories                              |
 | `/resources/faqs`            | `src/app/resources/faqs/page.tsx`     | Full FAQ accordion                               |
-| `/services`                  | `src/app/services/page.tsx`           | IT services for businesses (4, quote-gated) + CTA band |
+| `/services`                  | `src/app/services/page.tsx`           | IT services for businesses (renders `SERVICES`, currently empty) + CTA band |
 | `/services/[service]`        | `src/app/services/[service]/page.tsx` | Service detail — offerings, process, quote CTA  |
-| `/institutes`                | `src/app/institutes/page.tsx`         | B2B pillar — 3 automation products, pilot flow, CTA band |
+| `/institutes`                | `src/app/institutes/page.tsx`         | B2B pillar — products, pilot flow, CTA band (copy `TODO` placeholders) |
 | `/contact`                   | `src/app/contact/page.tsx`            | Lead form (Zod-validated) + real contact info    |
 | `/verify`                    | `src/app/verify/page.tsx`             | Certificate serial lookup UI                     |
 
@@ -104,8 +107,8 @@ Follows the Figma component architecture — atoms → molecules → organisms.
 
 | Component     | File              | API                                                        |
 | ------------- | ----------------- | ---------------------------------------------------------- |
-| `Button`      | `Button.tsx`      | Researched spec: pill, weight 700. `variant`: primary/ghost/outline/whatsapp · `size`: sm (13.5px, 8px 15px) / md (15px, 11px 20px) / lg (16px, 14px 26px) |
-| `Chip`        | `Chip.tsx`        | Pill label · `tone`: default/brand (e.g. "Leg 1 · B2C", product tags) |
+| `Button`      | `Button.tsx`      | Pill, weight 700. `variant`: primary/ghost/outline/whatsapp · `size`: sm (13.5px, 8px 15px) / md (15px, 11px 20px) / lg (16px, 14px 26px) |
+| `Chip`        | `Chip.tsx`        | Pill label · `tone`: default/brand |
 | `Input`       | `Input.tsx`       | Labeled input with inline `error` message                  |
 | `Badge`       | `Badge.tsx`       | Pill tag · `tone`: primary/accent/muted                    |
 | `IconButton`  | `IconButton.tsx`  | Icon-only button (`aria-label` required)                   |
@@ -119,23 +122,24 @@ Follows the Figma component architecture — atoms → molecules → organisms.
 | `ServiceCard`  | `ServiceCard.tsx`   | Service tile with icon, hover arrow                          |
 | `TeamCard`     | `TeamCard.tsx`      | Member card — initials avatar until photos land              |
 | `FaqAccordion` | `FaqAccordion.tsx`  | IBM Carbon `Accordion` — keyboard accessible                 |
-| `WhatsAppDemo` | `WhatsAppDemo.tsx`  | **New.** Researched "website as live demo" — static chat bubbles simulating Product 1 answering |
-| `CtaBand`      | `CtaBand.tsx`       | **New.** Researched dark rounded panel with the single "Get a Callback" CTA |
-| `EvidenceTag`  | `EvidenceTag.tsx`   | **New.** Honesty tags for `/research`: verified / measured / practitioner / index |
+| `WhatsAppDemo` | `WhatsAppDemo.tsx`  | Chat-bubble demo widget — structure only, 2 `TODO` placeholder bubbles |
+| `CtaBand`      | `CtaBand.tsx`       | Dark rounded panel with the single "Get a Callback" CTA |
 
 ### `src/components/organisms/`
 
 | Component              | File                  | Notes                                                     |
 | ---------------------- | --------------------- | --------------------------------------------------------- |
-| `Topbar`               | `Topbar.tsx`          | **Reworked.** Researched utility bar — dark ink strip: location + quick links (Contact, Verify a Certificate, For Institutes) |
-| `Navbar`               | `Navbar.tsx`          | **Reworked.** Sticky blurred header, pill audience tabs (Students/Businesses/For Institutes/Pricing/Site Map/Research), single "Get a Callback" CTA. No desktop hamburger |
-| `HomeHero`             | `HomeHero.tsx`        | **New.** Researched split-audience hero: pill switcher (I'm a Student / I'm a Business / I Run an Institute) swaps headline/copy/CTA; WhatsApp demo; 4-up trust grid |
-| `MobileTabBar`         | `MobileTabBar.tsx`    | **New.** Mobile-only bottom tab bar: Home · Courses · Pricing · Institutes · More; "More" opens a bottom sheet with every page |
-| `CallbackModal`        | `CallbackModal.tsx`   | **New.** `CallbackModalProvider` (mounted in `layout.tsx`) + `CallbackButton` + `useCallbackModal()`. The single site-wide CTA: name, 10-digit Indian mobile (validated `/^[6-9]\d{9}$/` after 91/0-prefix normalization), audience select, message; copies the enquiry for WhatsApp/email (researched behavior) |
-| `Footer`               | `Footer.tsx`          | **Reworked.** Researched 4 columns (Students/Businesses/For Institutes) + real address, both phones, both emails, office hours, WhatsApp button |
+| `Topbar`               | `Topbar.tsx`          | Utility bar — dark ink strip: location + quick links (Contact, Verify a Certificate, For Institutes) |
+| `Navbar`               | `Navbar.tsx`          | Sticky blurred header, pill audience tabs (Students/Businesses/For Institutes/Pricing/Site Map), single "Get a Callback" CTA. No desktop hamburger |
+| `HomeHero`             | `HomeHero.tsx`        | Split-audience hero: pill switcher (I'm a Student / I'm a Business / I Run an Institute) swaps headline/copy/CTA; WhatsApp demo; 4-up trust grid — all copy `TODO` placeholders |
+| `MobileTabBar`         | `MobileTabBar.tsx`    | Mobile-only bottom tab bar: Home · Courses · Pricing · Institutes · More; "More" opens a bottom sheet with every page |
+| `CallbackModal`        | `CallbackModal.tsx`   | `CallbackModalProvider` (mounted in `layout.tsx`) + `CallbackButton` + `useCallbackModal()`. The single site-wide CTA: name, 10-digit Indian mobile (validated `/^[6-9]\d{9}$/` after 91/0-prefix normalization), audience select, message; copies the enquiry for WhatsApp/email |
+| `Footer`               | `Footer.tsx`          | 4 columns (Students/Businesses/For Institutes) + real address, both phones, both emails, office hours, WhatsApp button |
 
-Removed in the researched overhaul (superseded, zero usages): the old
-`Hero`, `ServicesSection`, `TrustBlock`, `StatsRibbon` organisms.
+Removed in the design-system overhaul (superseded, zero usages): the old
+`Hero`, `ServicesSection`, `TrustBlock`, `StatsRibbon` organisms. Removed in
+the content strip (2026-10-06): `/research` page + `EvidenceTag` — the
+researched HTML files were for structure/design only.
 
 ### `src/components/chatbot/`
 
@@ -147,8 +151,8 @@ Removed in the researched overhaul (superseded, zero usages): the old
 
 | File            | Contents                                                                 |
 | --------------- | ------------------------------------------------------------------------ |
-| `contracts.ts`  | Shared Zod schemas + TS types: `LeadSubmissionSchema` (fullName min 2, phone `/^[6-9]\d{9}$/`, email, courseInterest enum of the **6 researched course slugs**, mode enum), `CallbackRequestSchema` (name, phone, audience enum student/business/institute, optional message) + `normalizeIndianMobile()` + `AUDIENCE_LABELS`, `CertificateLookupSchema`, `ChatMessageSchema` — used by forms now, API routes later |
-| `mock-data.ts`  | `COURSES` — the **researched 6-course lineup** (CEH, SOC Analyst, CCNA, AWS + DevOps, Web Development, Digital Marketing), each with researched `who` / `outcome` / `topics` + fee slots marked "to be confirmed" (never invented); `BATCHES`; `SERVICES` — the researched 4 (Web Development, Cybersecurity Services, Digital Marketing, Corporate Training); `PRODUCTS` — the researched 3 institute products (WhatsApp Lead Automation, Video LMS, PXE Lab Setup); `FAQS` (incl. real address + fee-transparency answers); `TEAM` (Nikhil Duth D, Founder & MD); `TESTIMONIALS`/`BLOG_POSTS` ([Pending] real ones); `STATS`; `CONTACT` — **real details**: "16-126 2nd Floor, Road No.1, Sri Krishna Nagar, Dilsukhnagar, Hyderabad 500060", +91 91826 54056 / +91 88866 60597, info@gsitssolutions.com / hr@gsitssolutions.com, WhatsApp https://wa.me/919885189951, hours 8:00 AM – 9:00 PM; `BRAND` (GradeSpot IT Solutions, tagline "Training · Services · Automation") |
+| `contracts.ts`  | Shared Zod schemas + TS types: `LeadSubmissionSchema` (fullName min 2, phone `/^[6-9]\d{9}$/`, email, courseInterest free text, mode enum), `CallbackRequestSchema` (name, phone, audience enum student/business/institute, optional message) + `normalizeIndianMobile()` + `AUDIENCE_LABELS`, `CertificateLookupSchema`, `ChatMessageSchema` — used by forms now, API routes later |
+| `mock-data.ts`  | **Content store — all lists intentionally EMPTY** (owner develops his own content; researched filler removed 2026-10-06). Typed interfaces + `TODO` shape comments for `COURSES`, `BATCHES`, `SERVICES`, `PRODUCTS`, `FAQS`, `TEAM`, `TESTIMONIALS`, `BLOG_POSTS`, `STATS`. `CONTACT` — **real details**: "16-126 2nd Floor, Road No.1, Sri Krishna Nagar, Dilsukhnagar, Hyderabad 500060", +91 91826 54056 / +91 88866 60597, info@gsitssolutions.com / hr@gsitssolutions.com, WhatsApp https://wa.me/919885189951, hours 8:00 AM – 9:00 PM; `BRAND` (GradeSpot IT Solutions, tagline "Training · Services · Automation"); `CATEGORY_LABELS` |
 
 ---
 
@@ -259,8 +263,8 @@ names (`brand`, `brand-ink`, `ink`, `ink2`, `ink3`, `bg`, `bg2`, `panel`,
 | WhatsApp chat demo | fake bubbles, Product 1 prototype | `WhatsAppDemo.tsx` |
 | Callback modal | name / 10-digit mobile / audience / message | `CallbackModal.tsx` |
 | CTA band | dark rounded panel | `CtaBand.tsx` |
-| Trust-indicator grid | 4-up (fees open, replies fast, verifiable, pilot #1) | `HomeHero.tsx` |
-| Chips / evidence tags | verified · measured · practitioner · index | `Chip.tsx` / `EvidenceTag.tsx` |
+| Trust-indicator grid | 4-up `TODO` placeholders | `HomeHero.tsx` |
+| Chips | pill labels, `tone`: default/brand | `Chip.tsx` |
 | Single site-wide CTA | **"Get a Callback"** everywhere — header, hero, page ends, mobile | `CallbackButton` |
 
 ### 4.7 Decision log — researched system vs. what the repo used before
@@ -275,14 +279,20 @@ names (`brand`, `brand-ink`, `ink`, `ink2`, `ink3`, `bg`, `bg2`, `panel`,
 | Container | `1200px` | `1180px` | **Researched wins** |
 | Card radius | `12px` | `14px` | **Researched wins** |
 | Button radius | `6px` | pill `999px` | **Researched wins** |
-| Course catalog | 11 courses (AWS, Azure, DevOps, Python, Java, CEH, Web Dev, Digital Marketing, Bank PO, SSC, CCNA) | 6 courses (CEH, SOC Analyst, CCNA, AWS + DevOps, Web Dev, Digital Marketing) with who/outcome/topics | **Researched wins** — replaced |
+| Course catalog | 11 courses (AWS, Azure, DevOps, Python, Java, CEH, Web Dev, Digital Marketing, Bank PO, SSC, CCNA) | Catalog emptied 2026-10-06 — owner develops his own content; the `Course` interface + `COURSES` shape in `mock-data.ts` remain | **Owner's call** — structure kept, content removed |
 | Site CTA | Competing CTAs ("Start Now", "Enquire Now", …) | Single "Get a Callback" | **Researched wins** |
 | Dark mode | none | `prefers-color-scheme` tokens | **Researched wins** — implemented |
 | Contact details | `[Pending]` placeholders | Real address/phones/emails/hours from Sample_Landing_Page_2 | **Researched wins** — applied |
 
 Rationale: the researched files are Aravind's own consolidated research and
-were explicitly ordered authoritative; the earlier tokens came from an
-automated inspection of the old WordPress site and were always provisional.
+were explicitly ordered authoritative **for the design system** (fonts,
+colors, radii, buttons, layout, component patterns); the earlier tokens
+came from an automated inspection of the old WordPress site and were always
+provisional. **Content is a separate matter**: on 2026-10-06 the owner
+directed that the researched files were for structure/design only, so all
+researched filler content was stripped — catalogs, services, products,
+FAQs, testimonials and marketing copy are empty `TODO` placeholders he
+fills himself.
 
 ### 4.8 SEO / schema patterns (researched)
 
@@ -332,11 +342,10 @@ gradespot-frontend-website/
 │   │   ├── favicon.ico
 │   │   ├── about/page.tsx              # /about — researched about
 │   │   ├── trainings/
-│   │   │   ├── page.tsx                # /trainings — 6 researched courses
+│   │   │   ├── page.tsx                # /trainings — catalog grid (COURSES empty)
 │   │   │   └── [course]/page.tsx       # /trainings/[course] — detail + Course JSON-LD (static)
 │   │   ├── batches/page.tsx            # /batches — schedule table ([Pending] dates)
 │   │   ├── pricing/page.tsx            # /pricing — 3 audience tiers + fee table
-│   │   ├── research/page.tsx           # /research — evidence tables + honesty tags
 │   │   ├── sitemap/page.tsx            # /sitemap — visual site map
 │   │   ├── resources/
 │   │   │   ├── page.tsx                # /resources — hub
@@ -344,9 +353,9 @@ gradespot-frontend-website/
 │   │   │   ├── testimonials/page.tsx   # /resources/testimonials
 │   │   │   └── faqs/page.tsx           # /resources/faqs
 │   │   ├── services/
-│   │   │   ├── page.tsx                # /services — 4 researched services + CTA band
+│   │   │   ├── page.tsx                # /services — grid (SERVICES empty) + CTA band
 │   │   │   └── [service]/page.tsx      # /services/[service] — detail (static)
-│   │   ├── institutes/page.tsx         # /institutes — 3 researched products + pilot flow
+│   │   ├── institutes/page.tsx         # /institutes — products (PRODUCTS empty) + pilot flow
 │   │   ├── contact/
 │   │   │   ├── page.tsx                # /contact — server shell + real contact info
 │   │   │   └── lead-form.tsx           # Zod-validated lead form (client)
@@ -358,8 +367,8 @@ gradespot-frontend-website/
 │   ├── components/
 │   │   ├── atoms/              # Button, Chip, Input, Badge, IconButton (+ index.ts)
 │   │   ├── molecules/          # NavItem, StatCounter, ServiceCard, TeamCard,
-│   │   │                       # FaqAccordion (Carbon), WhatsAppDemo, CtaBand,
-│   │   │                       # EvidenceTag (+ index.ts)
+│   │   │                       # FaqAccordion (Carbon), WhatsAppDemo,
+│   │   │                       # CtaBand (+ index.ts)
 │   │   ├── organisms/          # Topbar (utility bar), Navbar (pill tabs),
 │   │   │                       # HomeHero (audience switch), MobileTabBar,
 │   │   │                       # CallbackModal (provider+button+hook), Footer (+ index.ts)

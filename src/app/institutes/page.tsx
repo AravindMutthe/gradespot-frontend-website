@@ -13,8 +13,7 @@ import { PRODUCTS } from "@/lib/mock-data";
 
 export const metadata: Metadata = {
   title: "For Institutes — GradeSpot Automation",
-  description:
-    "Automation products for training institutes: WhatsApp lead automation, watermarked video LMS, crash-proof PXE labs. Setup + monthly, pilot first.",
+  description: "Automation products for training institutes — GradeSpot.",
 };
 
 export default function InstitutesPage() {
@@ -29,9 +28,7 @@ export default function InstitutesPage() {
         </p>
         <h1>Automation Products for Training Institutes</h1>
         <p className="mt-2.5 max-w-[720px] text-[17px] text-ink2">
-          Designed for our own institute first; first pilots are planned with
-          institutes across Hyderabad&apos;s training hubs — Ameerpet,
-          Dilsukhnagar, Kukatpally. Setup fee + monthly, installed for you.
+          TODO: one or two sentences introducing your institute products.
         </p>
       </div>
 
@@ -69,10 +66,10 @@ export default function InstitutesPage() {
               <h3 className="text-[19px] font-bold">How a pilot works</h3>
               <ul className="mt-3.5">
                 {[
-                  "We install Product 1 on your existing WhatsApp number",
-                  "Enquiries get answered in seconds, day or night, with counsellor handoff",
-                  "You measure enquiry-to-admission lift for one batch cycle",
-                  "Happy? Add the LMS and labs. Not happy? You've risked one small pilot fee",
+                  "TODO: pilot step one",
+                  "TODO: pilot step two",
+                  "TODO: pilot step three",
+                  "TODO: pilot step four",
                 ].map((t) => (
                   <li
                     key={t}
@@ -88,27 +85,22 @@ export default function InstitutesPage() {
               </ul>
             </div>
             <div className="rounded-card border border-line bg-panel p-[22px]">
-              <h3 className="text-[19px] font-bold">Why buy it from an institute?</h3>
+              <h3 className="text-[19px] font-bold">Why buy it from us?</h3>
               <p className="mt-2 text-[15px] text-ink2">
-                Generic vendors (Interakt, WATI, AiSensy nationally; BotSense
-                and ManageMyLeads here in Hyderabad) sell one piece of
-                software. LMS platforms like Classplus sell software alone at
-                around ₹30k/year. Nobody local sells the bundle — lead engine
-                + course platform + labs — installed by someone who runs an
-                institute and uses it daily. That gap is the product.
+                TODO: one or two sentences on why institutes should buy
+                these products from you.
               </p>
               <p className="mt-2.5 text-[12.5px] text-ink3">
-                Competitor notes from the business research; pricing figures
-                as discussed, to be re-verified before launch.
+                TODO: supporting detail.
               </p>
             </div>
           </div>
 
           <div className="mt-[30px]">
             <CtaBand
-              title="See it before you buy it"
-              text="The chat on our home page is a prototype of Product 1's answers. Book a walkthrough on your own enquiry flow."
-              ctaLabel="Book a Walkthrough"
+              title="Your call-to-action headline here"
+              text="TODO: one supporting sentence for the call to action."
+              ctaLabel="Get a Callback"
             />
           </div>
         </div>

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { BRAND } from "@/lib/mock-data";
 import { CallbackButton } from "./CallbackModal";
 
-/* Sticky blurred header — researched: pill nav tabs, single "Get a Callback"
+/* Sticky blurred header — pill nav tabs, single "Get a Callback"
  * CTA. Desktop tabs are the audience split; everything else lives in the
  * footer + mobile "More" sheet. No desktop hamburger. */
 
@@ -15,7 +15,6 @@ const TABS = [
   { href: "/institutes", label: "For Institutes" },
   { href: "/pricing", label: "Pricing" },
   { href: "/sitemap", label: "Site Map" },
-  { href: "/research", label: "Research" },
 ];
 
 function isActive(pathname: string, href: string) {

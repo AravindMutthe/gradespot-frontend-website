@@ -9,8 +9,7 @@ import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "IT Services — GradeSpot IT Solutions",
-  description:
-    "GradeSpot IT services for businesses: web development, cybersecurity services, digital marketing, corporate training. Project-based, quote-gated.",
+  description: "GradeSpot IT services for businesses.",
 };
 
 const ICONS: Record<string, ReactNode> = {
@@ -32,9 +31,7 @@ export default function ServicesPage() {
         </p>
         <h1>IT Services for Businesses</h1>
         <p className="mt-2.5 max-w-[720px] text-[17px] text-ink2">
-          The software &amp; IT solutions side of the company. Project-based,
-          quote-gated — the standard pattern: publish training prices, gate
-          services quotes.
+          TODO: one or two sentences introducing your IT services.
         </p>
       </div>
 
@@ -64,8 +61,8 @@ export default function ServicesPage() {
         </div>
         <div className="container-brand mt-[30px]">
           <CtaBand
-            title="Have a project in mind?"
-            text="Tell us what you're building or fixing. We'll call back with scope and a quote — no obligation."
+            title="Your call-to-action headline here"
+            text="TODO: one supporting sentence for the call to action."
             ctaLabel="Request a Quote Call"
           />
         </div>

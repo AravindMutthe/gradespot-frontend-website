@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-/* Chip — researched pill label (e.g. "Leg 1 · B2C", product tags). */
+/* Chip — pill label. */
 
 export interface ChipProps {
   children: ReactNode;

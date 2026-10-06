@@ -7,9 +7,9 @@ import { WhatsAppDemo } from "@/components/molecules/WhatsAppDemo";
 import { CallbackButton } from "@/components/organisms/CallbackModal";
 import { Button } from "@/components/atoms";
 
-/* Home hero — researched split-audience hero: one headline, audience pill
- * switcher, single repeated CTA, WhatsApp demo as the "live demo", trust grid.
- * Copy swaps per audience; the demo shows for students/institutes only. */
+/* Home hero — split-audience hero: headline, audience pill switcher,
+ * single repeated CTA, WhatsApp demo widget, trust grid.
+ * TODO: replace all placeholder copy below with your own. */
 
 type Audience = "students" | "businesses" | "institutes";
 
@@ -29,63 +29,48 @@ const COPY: Record<
     tab: "I'm a Student",
     headline: (
       <>
-        Get job-ready in <span className="text-brand">cybersecurity &amp; IT</span>,
-        trained in Hyderabad.
+        Your headline here <span className="text-brand">with an accent</span>.
       </>
     ),
-    sub: "Live trainer-led batches, hands-on labs, and a certificate anyone can verify online — with every course fee printed on its page at launch, never hidden behind a phone call.",
+    sub: "Your description here — what students get, in one or two sentences.",
     secondary: "See Courses & Fees",
     secondaryHref: "/trainings",
-    note: "One button, everywhere on this site — the research says a single repeated CTA converts better than five competing ones.",
+    note: "TODO: supporting note for the student audience.",
     demo: true,
   },
   businesses: {
     tab: "I'm a Business",
     headline: (
       <>
-        Web, security &amp; marketing that <span className="text-brand">brings enquiries</span> —
-        built by practitioners.
+        Your headline here <span className="text-brand">with an accent</span>.
       </>
     ),
-    sub: "The IT solutions side of GradeSpot: websites, security services and digital marketing for businesses that live on leads.",
+    sub: "Your description here — what businesses get, in one or two sentences.",
     secondary: "See IT Services",
     secondaryHref: "/services",
-    note: "Services sit inside the Businesses tab — the OffSec pattern: products in the main nav, services in the business track.",
+    note: "TODO: supporting note for the business audience.",
     demo: false,
   },
   institutes: {
     tab: "I Run an Institute",
     headline: (
       <>
-        Your enquiries answered in <span className="text-brand">~4 seconds</span>, even at
-        midnight.
+        Your headline here <span className="text-brand">with an accent</span>.
       </>
     ),
-    sub: "WhatsApp lead automation, a piracy-resistant video LMS and crash-proof labs — designed for our own institute first, now being readied for institutes like yours.",
+    sub: "Your description here — what institute owners get, in one or two sentences.",
     secondary: "See the Products",
     secondaryHref: "/institutes",
-    note: "This hero is the pattern the research calls “website as live demo” — the chat beside you is a prototype of Product 1's answers.",
+    note: "TODO: supporting note for the institute audience.",
     demo: true,
   },
 };
 
 const TRUST = [
-  {
-    b: "Fees in the open",
-    s: "Course fees print on the page at launch — no callback hostage pricing",
-  },
-  {
-    b: "Replies in seconds",
-    s: "The planned WhatsApp engine answers enquiries ~4 seconds in",
-  },
-  {
-    b: "Verifiable certificates",
-    s: "Every certificate checks out on the Verify page",
-  },
-  {
-    b: "Pilot #1 is us",
-    s: "GradeSpot is the first pilot for every product, before it's sold to anyone",
-  },
+  { b: "Your trust point here", s: "TODO: one-line supporting detail." },
+  { b: "Your trust point here", s: "TODO: one-line supporting detail." },
+  { b: "Your trust point here", s: "TODO: one-line supporting detail." },
+  { b: "Your trust point here", s: "TODO: one-line supporting detail." },
 ];
 
 export function HomeHero() {
@@ -149,8 +134,8 @@ export function HomeHero() {
         </div>
 
         <div className="mt-[38px] grid gap-4 border-t border-line pt-[22px] sm:grid-cols-2 lg:grid-cols-4">
-          {TRUST.map((t) => (
-            <div key={t.b}>
+          {TRUST.map((t, i) => (
+            <div key={i}>
               <b className="font-display block text-[15.5px]">{t.b}</b>
               <span className="text-[13px] text-ink3">{t.s}</span>
             </div>

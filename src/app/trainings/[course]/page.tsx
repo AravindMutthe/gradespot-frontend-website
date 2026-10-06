@@ -29,7 +29,7 @@ export async function generateMetadata({
   };
 }
 
-/* JSON-LD Course schema (researched schema stack). */
+/* JSON-LD Course schema. */
 function CourseJsonLd({ course }: { course: (typeof COURSES)[number] }) {
   const data = {
     "@context": "https://schema.org",
@@ -149,16 +149,8 @@ export default async function CoursePage({
             </div>
           </div>
           <div className="mt-[22px] rounded-card border border-line bg-brand-soft p-[18px] text-[14.5px] text-ink2">
-            <b className="text-ink">Built for search &amp; AI answers:</b> this
-            page carries <code className="mono rounded-md border border-line bg-bg2 px-1.5 py-0.5 text-[0.86em]">Course</code> +{" "}
-            <code className="mono rounded-md border border-line bg-bg2 px-1.5 py-0.5 text-[0.86em]">Offer</code> schema,
-            an <code className="mono rounded-md border border-line bg-bg2 px-1.5 py-0.5 text-[0.86em]">EducationalOrganization</code> provider
-            and <code className="mono rounded-md border border-line bg-bg2 px-1.5 py-0.5 text-[0.86em]">BreadcrumbList</code> — the
-            researched schema stack.{" "}
-            <Link href="/research" className="font-bold hover:underline">
-              See the evidence
-            </Link>
-            .
+            <b className="text-ink">TODO:</b> confirm the syllabus, trainer
+            and fee details for this course before launch.
           </div>
         </div>
       </section>

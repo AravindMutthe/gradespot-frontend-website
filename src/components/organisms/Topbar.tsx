@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CONTACT } from "@/lib/mock-data";
 
-/* Utility bar — researched dark strip above the header:
+/* Utility bar — dark strip above the header:
  * location + quick links left, audience note right. */
 
 export function Topbar() {

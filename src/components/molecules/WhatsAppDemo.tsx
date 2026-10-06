@@ -1,22 +1,12 @@
 "use client";
 
-/* WhatsApp chat demo — researched "website as live demo" widget.
- * A simulation of Product 1 (the WhatsApp lead engine) answering as designed.
- * Static bubbles; the live engine plugs in behind this UI in Phase 3. */
+/* WhatsApp chat demo widget — chat-bubble UI structure.
+ * TODO: replace the placeholder bubbles below with your own demo script.
+ * The live engine plugs in behind this UI in Phase 3. */
 
 const MESSAGES = [
-  { from: "in", text: "Hi! What is the fee for the CEH course?", time: "9:41 pm" },
-  {
-    from: "out",
-    text: "Hi! CEH is a trainer-led batch starting soon — fee, duration and EMI options are on the Pricing page. Want a counsellor to call you?",
-    time: "9:41 pm",
-  },
-  { from: "in", text: "Yes please", time: "9:41 pm" },
-  {
-    from: "out",
-    text: "Done — you're booked for a callback. Meanwhile, here's the course page with the full syllabus.",
-    time: "9:41 pm",
-  },
+  { from: "in", text: "TODO: sample visitor message", time: "--:--" },
+  { from: "out", text: "TODO: sample automated reply", time: "--:--" },
 ] as const;
 
 export function WhatsAppDemo() {
@@ -32,7 +22,7 @@ export function WhatsAppDemo() {
         <span>
           <b className="block text-[14.5px]">GradeSpot Admissions</b>
           <span className="text-xs font-semibold text-ok">
-            prototype · replies in seconds
+            TODO: status line
           </span>
         </span>
       </div>
@@ -52,8 +42,7 @@ export function WhatsAppDemo() {
         </div>
       ))}
       <p className="mt-2.5 text-[12.5px] text-ink3">
-        A simulation of Product 1 — the WhatsApp lead engine — answering as
-        designed. The plan: the live website itself becomes the demo.
+        TODO: one-line caption describing what this demo shows.
       </p>
     </div>
   );

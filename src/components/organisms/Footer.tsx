@@ -2,7 +2,7 @@ import Link from "next/link";
 import { LogoLinkedin, LogoInstagram, LogoFacebook } from "@carbon/icons-react";
 import { CONTACT, SERVICES, BRAND } from "@/lib/mock-data";
 
-/* Site footer — researched 4-column layout + legal sub-bar. */
+/* Site footer — 4-column layout + legal sub-bar. */
 
 export function Footer() {
   return (
@@ -76,11 +76,8 @@ export function Footer() {
           </p>
           <ul className="mt-3 space-y-1 text-sm">
             {[
-              { href: "/institutes", label: "WhatsApp Lead Automation" },
-              { href: "/institutes", label: "Video LMS" },
-              { href: "/institutes", label: "Lab Setup" },
+              { href: "/institutes", label: "For Institutes" },
               { href: "/sitemap", label: "Site Map" },
-              { href: "/research", label: "Research" },
             ].map((l) => (
               <li key={l.label}>
                 <Link href={l.href} className="block py-[3px] text-ink2 hover:text-brand-ink">
