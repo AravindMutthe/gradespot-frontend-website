@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+ * GradeSpot brand design tokens (extracted from the live gsitssolutions.com).
+ *
+ * Wired into Tailwind CSS v4 via @theme, so every token below generates
+ * utilities automatically, e.g.:
+ *   --color-primary       ->  bg-primary, text-primary, border-primary, ...
+ *   --color-accent        ->  bg-accent,  text-accent,  border-accent,  ...
+ *   --radius-button       ->  rounded-button
+ *   --radius-card         ->  rounded-card
+ * ------------------------------------------------------------------------- */
+@theme {
+  /* Brand colors */
+  --color-primary: #0a4d92; /* Tech Blue (base) */
+  --color-primary-light: #0b58ca; /* Tech Blue (bright) */
+  --color-accent: #f37021; /* Safety Orange (base) */
+  --color-accent-light: #ff9900; /* Safety / Action Orange (bright) */
+  --color-dark: #1a1d24; /* Near Black / Dark Charcoal (headings, body text) */
+  --color-muted: #64748b; /* Cool Gray (secondary text) */
+  --color-surface-light: #f8fafc; /* Light page surface */
+  --color-surface: #ffffff; /* White surface (cards, header) */
+
+  /* Radii */
+  --radius-button: 6px; /* Buttons */
+  --radius-card: 12px; /* Cards / modals */
+}
+
+/* Brand container: 1200px max-width, 12-column grid context, 24px gutters.
+ * Usage: <main className="container-brand"> ... </main> */
+@utility container-brand {
+  margin-inline: auto;
+  max-width: 1200px;
+  padding-inline: 1.5rem;
+}
+
+body {
+  background-color: var(--color-surface-light);
+  color: var(--color-dark);
+  font-family:
+    var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}

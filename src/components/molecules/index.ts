@@ -1,0 +1,10 @@
+export { NavItem } from "./NavItem";
+export type { NavItemProps } from "./NavItem";
+export { StatCounter } from "./StatCounter";
+export type { StatCounterProps } from "./StatCounter";
+export { ServiceCard } from "./ServiceCard";
+export type { ServiceCardProps } from "./ServiceCard";
+export { TeamCard } from "./TeamCard";
+export type { TeamCardProps } from "./TeamCard";
+export { FaqAccordion } from "./FaqAccordion";
+export type { FaqAccordionProps } from "./FaqAccordion";
