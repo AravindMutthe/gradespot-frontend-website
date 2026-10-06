@@ -1,15 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Topbar, Navbar, Footer } from "@/components/organisms";
-import { ServiceCard } from "@/components/molecules";
+import { Topbar, Navbar, Footer, MobileTabBar } from "@/components/organisms";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
-import { COURSES } from "@/lib/mock-data";
-import { Education } from "@carbon/icons-react";
+import { COURSES, CATEGORY_LABELS } from "@/lib/mock-data";
 
 export const metadata: Metadata = {
-  title: "Trainings — GradeSpot IT Solutions",
+  title: "Courses & Fees — GradeSpot IT Solutions",
   description:
-    "Career-focused IT training: cybersecurity, web development, cloud & DevOps, data science, Python. Classroom and live-online batches in Hyderabad.",
+    "Six job-ready courses: CEH, SOC Analyst, CCNA, AWS + DevOps, Web Development, Digital Marketing. Syllabus, trainer and fee on every page — Hyderabad classroom + live online.",
 };
 
 export default function TrainingsPage() {
@@ -18,40 +16,52 @@ export default function TrainingsPage() {
       <Topbar />
       <Navbar />
 
-      <section className="bg-surface-light">
-        <div className="container-brand py-14">
-          <p className="text-sm font-semibold uppercase tracking-wide text-accent">
-            Trainings / Academic
-          </p>
-          <h1 className="mt-2 text-4xl font-bold text-dark">
-            Courses that get you hired
-          </h1>
-          <p className="mt-4 max-w-3xl text-lg text-muted">
-            Hands-on batches with labs, projects, and counsellor guidance —
-            in our Hyderabad classroom or live online.
-          </p>
-        </div>
-      </section>
+      <div className="container-brand pb-2 pt-11">
+        <p className="mono mb-3.5 text-[12.5px] text-ink3">
+          <Link href="/" className="text-ink3">Home</Link> / Courses
+        </p>
+        <h1>Courses &amp; Fees</h1>
+        <p className="mt-2.5 max-w-[720px] text-[17px] text-ink2">
+          Six course pages under one flat <span className="mono">/trainings/…</span> structure
+          — within three clicks of home, each with its own syllabus, trainer
+          and price.
+        </p>
+      </div>
 
-      <section className="bg-surface">
-        <div className="container-brand grid gap-6 py-14 md:grid-cols-2 lg:grid-cols-3">
+      <section className="py-[26px]">
+        <div className="container-brand grid gap-[18px] md:grid-cols-2 lg:grid-cols-3">
           {COURSES.map((c) => (
-            <ServiceCard
+            <div
               key={c.slug}
-              icon={<Education size={24} />}
-              title={c.title}
-              description={`${c.tagline} · ${c.duration} · ${c.level}`}
-              href={`/trainings/${c.slug}`}
-            />
+              className="rounded-card border border-line bg-panel p-[22px]"
+            >
+              <div className="flex items-start justify-between gap-2.5">
+                <h3 className="text-[19px] font-bold">{c.title}</h3>
+              </div>
+              <p className="mono mt-2 text-[11px] uppercase tracking-[0.06em] text-ink3">
+                {CATEGORY_LABELS[c.category]} · {c.level}
+              </p>
+              <p className="mt-2 text-[15px] text-ink2">
+                {c.who.split("—")[0].trim()}
+              </p>
+              <div className="mt-3.5">
+                <span className="mono rounded-lg border border-dashed border-line bg-bg2 px-2.5 py-1.5 text-xs text-ink3">
+                  Fee: to be confirmed
+                </span>
+              </div>
+              <Link
+                href={`/trainings/${c.slug}`}
+                className="mt-3.5 inline-flex items-center gap-1.5 text-[14.5px] font-bold"
+              >
+                Syllabus &amp; details →
+              </Link>
+            </div>
           ))}
         </div>
-      </section>
-
-      <section className="bg-surface-light">
         <div className="container-brand py-10 text-center">
-          <p className="text-muted">
+          <p className="text-ink2">
             Completed a course?{" "}
-            <Link href="/verify" className="font-semibold text-primary hover:underline">
+            <Link href="/verify" className="font-bold hover:underline">
               Verify your certificate
             </Link>
           </p>
@@ -59,6 +69,7 @@ export default function TrainingsPage() {
       </section>
 
       <Footer />
+      <MobileTabBar />
       <ChatWidget />
     </>
   );

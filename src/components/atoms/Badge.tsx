@@ -3,9 +3,9 @@ import type { ReactNode } from "react";
 type BadgeTone = "primary" | "accent" | "muted";
 
 const TONES: Record<BadgeTone, string> = {
-  primary: "bg-primary/10 text-primary",
-  accent: "bg-accent/10 text-accent",
-  muted: "bg-muted/10 text-muted",
+  primary: "bg-brand/10 text-brand-ink",
+  accent: "bg-brand/10 text-brand-ink",
+  muted: "bg-ink3/10 text-ink3",
 };
 
 export interface BadgeProps {

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Topbar, Navbar, Footer } from "@/components/organisms";
-import { Button, Badge } from "@/components/atoms";
+import { Topbar, Navbar, Footer, MobileTabBar, CallbackButton } from "@/components/organisms";
+import { Badge } from "@/components/atoms";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
 import { BATCHES, COURSES, CATEGORY_LABELS } from "@/lib/mock-data";
 
@@ -25,15 +25,15 @@ export default function BatchesPage() {
       <Topbar />
       <Navbar />
 
-      <section className="bg-surface-light">
+      <section className="bg-bg2">
         <div className="container-brand py-14">
-          <p className="text-sm font-semibold uppercase tracking-wide text-accent">
+          <p className="text-sm font-semibold uppercase tracking-wide text-brand-ink">
             Admissions
           </p>
-          <h1 className="mt-2 text-4xl font-bold text-dark">
+          <h1 className="mt-2 text-4xl font-bold text-ink">
             Upcoming batches
           </h1>
-          <p className="mt-4 max-w-3xl text-lg text-muted">
+          <p className="mt-4 max-w-3xl text-lg text-ink3">
             Classroom batches in Dilsukhnagar, Hyderabad and live-online
             batches. [Pending: confirm dates and timings with the team before
             publishing.]
@@ -41,12 +41,12 @@ export default function BatchesPage() {
         </div>
       </section>
 
-      <section className="bg-surface">
+      <section className="bg-panel">
         <div className="container-brand py-14">
-          <div className="overflow-x-auto rounded-card border border-muted/20">
+          <div className="overflow-x-auto rounded-card border border-line/20">
             <table className="w-full min-w-[720px] text-left text-sm">
               <thead>
-                <tr className="bg-surface-light text-xs uppercase tracking-wide text-muted">
+                <tr className="bg-bg2 text-xs uppercase tracking-wide text-ink3">
                   <th className="px-6 py-4 font-semibold">Course</th>
                   <th className="px-6 py-4 font-semibold">Category</th>
                   <th className="px-6 py-4 font-semibold">Starts</th>
@@ -61,20 +61,20 @@ export default function BatchesPage() {
                   return (
                     <tr
                       key={b.courseSlug}
-                      className="border-t border-muted/10 hover:bg-surface-light"
+                      className="border-t border-line/10 hover:bg-bg2"
                     >
                       <td className="px-6 py-4">
                         <Link
                           href={`/trainings/${b.courseSlug}`}
-                          className="font-semibold text-primary hover:underline"
+                          className="font-semibold text-brand-ink hover:underline"
                         >
                           {c.title}
                         </Link>
                       </td>
-                      <td className="px-6 py-4 text-muted">{c.category}</td>
-                      <td className="px-6 py-4 text-dark">{b.startDate}</td>
-                      <td className="px-6 py-4 text-dark">{b.timing}</td>
-                      <td className="px-6 py-4 text-dark">{b.mode}</td>
+                      <td className="px-6 py-4 text-ink3">{c.category}</td>
+                      <td className="px-6 py-4 text-ink">{b.startDate}</td>
+                      <td className="px-6 py-4 text-ink">{b.timing}</td>
+                      <td className="px-6 py-4 text-ink">{b.mode}</td>
                       <td className="px-6 py-4">
                         <Badge tone="accent">{b.status}</Badge>
                       </td>
@@ -85,7 +85,7 @@ export default function BatchesPage() {
             </table>
           </div>
 
-          <div className="mt-10 rounded-card bg-primary p-8 text-center">
+          <div className="mt-10 rounded-card bg-brand p-8 text-center">
             <h2 className="text-2xl font-bold text-white">
               Reserve your seat
             </h2>
@@ -93,20 +93,20 @@ export default function BatchesPage() {
               Batch dates are confirmed on enquiry — talk to a counsellor for
               the exact schedule.
             </p>
-            <Link href="/contact" className="mt-6 inline-block">
-              <Button
-                variant="outline"
+            <div className="mt-6 inline-block">
+              <CallbackButton
                 size="lg"
-                className="border-white text-white hover:bg-white hover:text-primary"
+                className="border border-white bg-transparent text-white hover:bg-white hover:text-brand-ink"
               >
-                Enquire Now
-              </Button>
-            </Link>
+                Get a Callback
+              </CallbackButton>
+            </div>
           </div>
         </div>
       </section>
 
       <Footer />
+      <MobileTabBar />
       <ChatWidget />
     </>
   );

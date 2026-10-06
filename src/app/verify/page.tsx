@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Topbar, Navbar, Footer } from "@/components/organisms";
+import { Topbar, Navbar, Footer, MobileTabBar } from "@/components/organisms";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
 import { VerifyForm } from "./verify-form";
 
@@ -15,15 +15,15 @@ export default function VerifyPage() {
       <Topbar />
       <Navbar />
 
-      <section className="bg-surface-light">
+      <section className="bg-bg2">
         <div className="container-brand max-w-3xl py-14">
-          <p className="text-sm font-semibold uppercase tracking-wide text-accent">
+          <p className="text-sm font-semibold uppercase tracking-wide text-brand-ink">
             Student Certifications
           </p>
-          <h1 className="mt-2 text-4xl font-bold text-dark">
+          <h1 className="mt-2 text-4xl font-bold text-ink">
             Certificate verification
           </h1>
-          <p className="mt-4 text-lg text-muted">
+          <p className="mt-4 text-lg text-ink3">
             Enter the serial printed on your GradeSpot certificate to check
             its authenticity.
           </p>
@@ -34,6 +34,7 @@ export default function VerifyPage() {
       </section>
 
       <Footer />
+      <MobileTabBar />
       <ChatWidget />
     </>
   );

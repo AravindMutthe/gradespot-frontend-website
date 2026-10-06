@@ -16,7 +16,7 @@ export function FaqAccordion({ items }: FaqAccordionProps) {
     <Accordion>
       {items.map((item) => (
         <AccordionItem key={item.q} title={item.q}>
-          <p className="text-muted">{item.a}</p>
+          <p className="text-ink3">{item.a}</p>
         </AccordionItem>
       ))}
     </Accordion>

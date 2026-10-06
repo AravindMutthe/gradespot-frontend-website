@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Topbar, Navbar, Footer } from "@/components/organisms";
+import { Topbar, Navbar, Footer, MobileTabBar } from "@/components/organisms";
 import { ServiceCard } from "@/components/molecules";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
 import { Blog, Star, Help } from "@carbon/icons-react";
@@ -37,22 +37,22 @@ export default function ResourcesPage() {
       <Topbar />
       <Navbar />
 
-      <section className="bg-surface-light">
+      <section className="bg-bg2">
         <div className="container-brand py-14">
-          <p className="text-sm font-semibold uppercase tracking-wide text-accent">
+          <p className="text-sm font-semibold uppercase tracking-wide text-brand-ink">
             Resources
           </p>
-          <h1 className="mt-2 text-4xl font-bold text-dark">
+          <h1 className="mt-2 text-4xl font-bold text-ink">
             Learn, decide, verify
           </h1>
-          <p className="mt-4 max-w-3xl text-lg text-muted">
+          <p className="mt-4 max-w-3xl text-lg text-ink3">
             Everything around the classroom: reading material, social proof,
             and answers.
           </p>
         </div>
       </section>
 
-      <section className="bg-surface">
+      <section className="bg-panel">
         <div className="container-brand grid gap-6 py-14 md:grid-cols-3">
           {HUB.map((h) => (
             <ServiceCard
@@ -67,6 +67,7 @@ export default function ResourcesPage() {
       </section>
 
       <Footer />
+      <MobileTabBar />
       <ChatWidget />
     </>
   );

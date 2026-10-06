@@ -1,38 +1,21 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { CheckmarkFilled } from "@carbon/icons-react";
-import { Topbar, Navbar, Footer } from "@/components/organisms";
-import { Button } from "@/components/atoms";
+import {
+  Topbar,
+  Navbar,
+  Footer,
+  MobileTabBar,
+} from "@/components/organisms";
+import { CtaBand } from "@/components/molecules";
+import { Chip } from "@/components/atoms";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
+import { PRODUCTS } from "@/lib/mock-data";
 
 export const metadata: Metadata = {
   title: "For Institutes — GradeSpot Automation",
   description:
-    "GradeSpot builds automation products for training institutes — lead management, WhatsApp follow-ups, and admissions funnels.",
+    "Automation products for training institutes: WhatsApp lead automation, watermarked video LMS, crash-proof PXE labs. Setup + monthly, pilot first.",
 };
-
-const OFFERINGS = [
-  {
-    title: "Lead capture & management",
-    description:
-      "Website lead forms wired to a single dashboard — no more lost enquiries in WhatsApp chats. [Pending: confirm product scope]",
-  },
-  {
-    title: "WhatsApp automation",
-    description:
-      "Instant follow-ups, batch reminders, and counsellor alerts over the WhatsApp Cloud API. [Pending: confirm product scope]",
-  },
-  {
-    title: "Admissions funnel websites",
-    description:
-      "High-converting institute websites with course catalogs, batch schedules, and online enquiry. [Pending: confirm product scope]",
-  },
-  {
-    title: "Batch & certificate operations",
-    description:
-      "Batch scheduling and verifiable student certificates in one place. [Pending: confirm product scope]",
-  },
-];
 
 export default function InstitutesPage() {
   return (
@@ -40,91 +23,99 @@ export default function InstitutesPage() {
       <Topbar />
       <Navbar />
 
-      <section className="bg-surface-light">
-        <div className="container-brand py-14">
-          <p className="text-sm font-semibold uppercase tracking-wide text-accent">
-            B2B · For Institutes
-          </p>
-          <h1 className="mt-2 text-4xl font-bold text-dark">
-            Automation products for training institutes
-          </h1>
-          <p className="mt-4 max-w-3xl text-lg text-muted">
-            GradeSpot doesn&apos;t just train students — we build the software
-            that runs institutes: admissions, follow-ups, and operations on
-            autopilot. [Pending: finalize positioning with the team.]
-          </p>
-          <div className="mt-8">
-            <Link href="/contact">
-              <Button size="lg">Talk to Us</Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <div className="container-brand pb-2 pt-11">
+        <p className="mono mb-3.5 text-[12.5px] text-ink3">
+          <Link href="/" className="text-ink3">Home</Link> / For Institutes
+        </p>
+        <h1>Automation Products for Training Institutes</h1>
+        <p className="mt-2.5 max-w-[720px] text-[17px] text-ink2">
+          Designed for our own institute first; first pilots are planned with
+          institutes across Hyderabad&apos;s training hubs — Ameerpet,
+          Dilsukhnagar, Kukatpally. Setup fee + monthly, installed for you.
+        </p>
+      </div>
 
-      <section className="bg-surface">
-        <div className="container-brand py-14">
-          <h2 className="text-3xl font-bold text-dark">What we build for you</h2>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {OFFERINGS.map((o) => (
+      <section className="py-[26px]">
+        <div className="container-brand">
+          <div className="grid gap-[18px] md:grid-cols-2 lg:grid-cols-3">
+            {PRODUCTS.map((p) => (
               <div
-                key={o.title}
-                className="rounded-card border border-muted/20 bg-surface p-8"
+                key={p.slug}
+                className="rounded-card border border-line bg-panel p-[22px]"
               >
-                <CheckmarkFilled size={24} className="text-primary" />
-                <h3 className="mt-4 text-xl font-semibold text-dark">
-                  {o.title}
-                </h3>
-                <p className="mt-2 text-muted">{o.description}</p>
+                <Chip tone="brand">{p.tag}</Chip>
+                <h3 className="mt-3 text-[19px] font-bold">{p.name}</h3>
+                <p className="mt-2 text-[15px] text-ink2">{p.description}</p>
+                <ul className="mt-3.5">
+                  {p.points.map((pt) => (
+                    <li
+                      key={pt}
+                      className="relative border-b border-dashed border-line py-1.5 pl-[26px] text-[14.5px] text-ink2 last:border-0"
+                    >
+                      <span
+                        aria-hidden
+                        className="absolute left-[2px] top-[12px] h-[7px] w-3 -rotate-45 border-b-[2.5px] border-l-[2.5px] border-ok"
+                      />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      <section className="bg-surface-light">
-        <div className="container-brand py-14">
-          <h2 className="text-3xl font-bold text-dark">How it works</h2>
-          <ol className="mt-8 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                step: "1",
-                title: "Discovery call",
-                text: "[Pending: describe the onboarding process.]",
-              },
-              {
-                step: "2",
-                title: "Setup & branding",
-                text: "[Pending: describe setup — domain, branding, data import.]",
-              },
-              {
-                step: "3",
-                title: "Go live & support",
-                text: "[Pending: describe launch and ongoing support.]",
-              },
-            ].map((s) => (
-              <li
-                key={s.step}
-                className="rounded-card border border-muted/20 bg-surface p-8"
-              >
-                <span className="flex h-10 w-10 items-center justify-center rounded-button bg-accent text-lg font-bold text-white">
-                  {s.step}
-                </span>
-                <h3 className="mt-4 text-lg font-semibold text-dark">
-                  {s.title}
-                </h3>
-                <p className="mt-2 text-sm text-muted">{s.text}</p>
-              </li>
-            ))}
-          </ol>
-          <div className="mt-10 text-center">
-            <Link href="/contact">
-              <Button size="lg">Request a Demo</Button>
-            </Link>
+          <div className="mt-[18px] grid gap-[18px] md:grid-cols-2">
+            <div className="rounded-card border border-line bg-panel p-[22px]">
+              <h3 className="text-[19px] font-bold">How a pilot works</h3>
+              <ul className="mt-3.5">
+                {[
+                  "We install Product 1 on your existing WhatsApp number",
+                  "Enquiries get answered in seconds, day or night, with counsellor handoff",
+                  "You measure enquiry-to-admission lift for one batch cycle",
+                  "Happy? Add the LMS and labs. Not happy? You've risked one small pilot fee",
+                ].map((t) => (
+                  <li
+                    key={t}
+                    className="relative border-b border-dashed border-line py-1.5 pl-[26px] text-[14.5px] text-ink2 last:border-0"
+                  >
+                    <span
+                      aria-hidden
+                      className="absolute left-[2px] top-[12px] h-[7px] w-3 -rotate-45 border-b-[2.5px] border-l-[2.5px] border-ok"
+                    />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-card border border-line bg-panel p-[22px]">
+              <h3 className="text-[19px] font-bold">Why buy it from an institute?</h3>
+              <p className="mt-2 text-[15px] text-ink2">
+                Generic vendors (Interakt, WATI, AiSensy nationally; BotSense
+                and ManageMyLeads here in Hyderabad) sell one piece of
+                software. LMS platforms like Classplus sell software alone at
+                around ₹30k/year. Nobody local sells the bundle — lead engine
+                + course platform + labs — installed by someone who runs an
+                institute and uses it daily. That gap is the product.
+              </p>
+              <p className="mt-2.5 text-[12.5px] text-ink3">
+                Competitor notes from the business research; pricing figures
+                as discussed, to be re-verified before launch.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-[30px]">
+            <CtaBand
+              title="See it before you buy it"
+              text="The chat on our home page is a prototype of Product 1's answers. Book a walkthrough on your own enquiry flow."
+              ctaLabel="Book a Walkthrough"
+            />
           </div>
         </div>
       </section>
 
       <Footer />
+      <MobileTabBar />
       <ChatWidget />
     </>
   );

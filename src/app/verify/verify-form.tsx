@@ -60,9 +60,9 @@ export function VerifyForm() {
       </form>
 
       {serial && (
-        <div className="mt-8 rounded-card border border-muted/20 bg-surface-light p-8 text-center">
-          <p className="font-mono text-lg font-semibold text-dark">{serial}</p>
-          <p className="mt-2 text-sm text-muted">
+        <div className="mt-8 rounded-card border border-line/20 bg-bg2 p-8 text-center">
+          <p className="font-mono text-lg font-semibold text-ink">{serial}</p>
+          <p className="mt-2 text-sm text-ink3">
             Verification service connects in Phase 3 — the lookup API on the
             Axon engine will return the student, course, and issue date for
             this serial. Nothing was checked yet.

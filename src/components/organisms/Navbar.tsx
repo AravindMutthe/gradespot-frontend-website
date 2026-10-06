@@ -1,150 +1,76 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Close, ChevronDown } from "@carbon/icons-react";
-import { NavItem } from "@/components/molecules";
-import { Button } from "@/components/atoms";
-import { COURSES, SERVICES } from "@/lib/mock-data";
+import { BRAND } from "@/lib/mock-data";
+import { CallbackButton } from "./CallbackModal";
 
-function Dropdown({
-  label,
-  items,
-  basePath,
-}: {
-  label: string;
-  items: { slug: string; title: string }[];
-  basePath: string;
-}) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <button
-        type="button"
-        aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-1 px-3 py-2 text-sm font-medium text-dark hover:text-primary"
-      >
-        {label}
-        <ChevronDown size={16} />
-      </button>
-      {open && (
-        <div className="absolute left-0 top-full z-50 w-64 rounded-card border border-muted/20 bg-surface py-2 shadow-lg">
-          {items.map((item) => (
-            <Link
-              key={item.slug}
-              href={`${basePath}/${item.slug}`}
-              className="block px-4 py-2 text-sm text-dark hover:bg-surface-light hover:text-primary"
-            >
-              {item.title}
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
-  );
+/* Sticky blurred header — researched: pill nav tabs, single "Get a Callback"
+ * CTA. Desktop tabs are the audience split; everything else lives in the
+ * footer + mobile "More" sheet. No desktop hamburger. */
+
+const TABS = [
+  { href: "/trainings", label: "Students" },
+  { href: "/services", label: "Businesses" },
+  { href: "/institutes", label: "For Institutes" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/sitemap", label: "Site Map" },
+  { href: "/research", label: "Research" },
+];
+
+function isActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(href + "/");
 }
 
-/** Main navigation header — logo, dropdowns, CTA, mobile drawer. */
 export function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
-  const links = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
-  ];
-
   return (
-    <header className="sticky top-0 z-40 border-b border-muted/20 bg-surface">
-      <div className="container-brand flex items-center justify-between py-3">
-        <Link href="/" className="text-xl font-bold text-dark">
-          Grade<span className="text-primary">Spot</span>
+    <header className="sticky top-0 z-[60] border-b border-line bg-bg/92 backdrop-blur-[10px]">
+      <div className="container-brand flex items-center gap-[26px] py-3">
+        <Link href="/" className="flex items-center gap-2.5" aria-label="GradeSpot home">
+          <span className="grid h-[34px] w-[34px] flex-none place-items-center rounded-[9px] bg-brand font-display text-[17px] font-extrabold text-white">
+            G
+          </span>
+          <span className="font-display text-[21px] font-extrabold leading-none text-ink">
+            {BRAND.short}
+            <small className="mt-0.5 block font-body text-[10.5px] font-semibold uppercase tracking-[0.04em] text-ink3">
+              {BRAND.tagline}
+            </small>
+          </span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center lg:flex">
-          {links.slice(0, 2).map((l) => (
-            <NavItem key={l.href} href={l.href} label={l.label} active={pathname === l.href} />
-          ))}
-          <Dropdown label="Trainings" items={COURSES} basePath="/trainings" />
-          <NavItem
-            href="/batches"
-            label="Batches"
-            active={pathname === "/batches"}
-          />
-          <Dropdown label="Services" items={SERVICES} basePath="/services" />
-          <NavItem
-            href="/institutes"
-            label="For Institutes"
-            active={pathname === "/institutes"}
-          />
-          <Dropdown
-            label="Resources"
-            items={[
-              { slug: "blog", title: "Blog" },
-              { slug: "testimonials", title: "Testimonials" },
-              { slug: "faqs", title: "FAQs" },
-            ]}
-            basePath="/resources"
-          />
-          {links.slice(2).map((l) => (
-            <NavItem key={l.href} href={l.href} label={l.label} active={pathname === l.href} />
-          ))}
-        </nav>
-
-        <div className="hidden lg:block">
-          <Link href="/contact">
-            <Button size="sm">Start Now</Button>
-          </Link>
-        </div>
-
-        <button
-          type="button"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-          className="lg:hidden"
-          onClick={() => setMobileOpen((v) => !v)}
-        >
-          {mobileOpen ? <Close size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {mobileOpen && (
-        <nav aria-label="Mobile" className="border-t border-muted/20 bg-surface lg:hidden">
-          <div className="container-brand flex flex-col py-2">
-            {[
-              { href: "/", label: "Home" },
-              { href: "/about", label: "About" },
-              { href: "/trainings", label: "Trainings" },
-              { href: "/batches", label: "Batches" },
-              { href: "/services", label: "Services" },
-              { href: "/institutes", label: "For Institutes" },
-              { href: "/resources", label: "Resources" },
-              { href: "/contact", label: "Contact" },
-            ].map((l) => (
+        <nav aria-label="Audiences" className="ml-1.5 hidden items-center gap-1 lg:flex">
+          {TABS.map((t) => {
+            const on = isActive(pathname, t.href);
+            return (
               <Link
-                key={l.href}
-                href={l.href}
-                onClick={() => setMobileOpen(false)}
-                className="border-b border-muted/10 py-3 text-sm font-medium text-dark last:border-0 hover:text-primary"
+                key={t.href}
+                href={t.href}
+                aria-current={on ? "page" : undefined}
+                className={`rounded-button border border-transparent px-[13px] py-2 text-[14.5px] font-semibold ${
+                  on
+                    ? "border-brand/35 bg-brand-soft text-brand-ink"
+                    : "text-ink2 hover:bg-bg2 hover:text-ink"
+                }`}
               >
-                {l.label}
+                {t.label}
               </Link>
-            ))}
-            <Link href="/contact" onClick={() => setMobileOpen(false)} className="py-3">
-              <Button size="sm" className="w-full">
-                Start Now
-              </Button>
-            </Link>
-          </div>
+            );
+          })}
         </nav>
-      )}
+
+        <div className="flex-1" />
+
+        <CallbackButton size="sm" className="hidden sm:inline-flex">
+          Get a Callback
+        </CallbackButton>
+        {/* Mobile: the bottom tab bar carries navigation; keep a compact CTA */}
+        <CallbackButton size="sm" className="sm:hidden">
+          Callback
+        </CallbackButton>
+      </div>
     </header>
   );
 }

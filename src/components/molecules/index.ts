@@ -8,3 +8,8 @@ export { TeamCard } from "./TeamCard";
 export type { TeamCardProps } from "./TeamCard";
 export { FaqAccordion } from "./FaqAccordion";
 export type { FaqAccordionProps } from "./FaqAccordion";
+export { WhatsAppDemo } from "./WhatsAppDemo";
+export { CtaBand } from "./CtaBand";
+export type { CtaBandProps } from "./CtaBand";
+export { EvidenceTag } from "./EvidenceTag";
+export type { EvidenceKind } from "./EvidenceTag";

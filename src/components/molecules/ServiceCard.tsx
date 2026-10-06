@@ -14,14 +14,14 @@ export function ServiceCard({ icon, title, description, href }: ServiceCardProps
   return (
     <Link
       href={href}
-      className="group flex flex-col rounded-card border border-muted/20 bg-surface p-6 transition-shadow hover:shadow-lg"
+      className="group flex flex-col rounded-card border border-line/20 bg-panel p-6 transition-shadow hover:shadow-lg"
     >
-      <span className="inline-flex h-12 w-12 items-center justify-center rounded-button bg-primary/10 text-primary">
+      <span className="inline-flex h-12 w-12 items-center justify-center rounded-button bg-brand/10 text-brand-ink">
         {icon}
       </span>
-      <h3 className="mt-4 text-lg font-semibold text-dark">{title}</h3>
-      <p className="mt-2 flex-1 text-sm text-muted">{description}</p>
-      <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent">
+      <h3 className="mt-4 text-lg font-semibold text-ink">{title}</h3>
+      <p className="mt-2 flex-1 text-sm text-ink3">{description}</p>
+      <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-ink">
         Learn more
         <ArrowRight
           size={16}

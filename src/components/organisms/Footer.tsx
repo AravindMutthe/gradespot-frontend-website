@@ -1,66 +1,68 @@
 import Link from "next/link";
 import { LogoLinkedin, LogoInstagram, LogoFacebook } from "@carbon/icons-react";
-import { CONTACT, SERVICES } from "@/lib/mock-data";
+import { CONTACT, SERVICES, BRAND } from "@/lib/mock-data";
 
-/** Site footer — 4 columns + legal sub-bar. */
+/* Site footer — researched 4-column layout + legal sub-bar. */
+
 export function Footer() {
   return (
-    <footer className="bg-dark text-white">
-      <div className="container-brand grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="border-t border-line bg-bg2">
+      <div className="container-brand grid gap-7 py-11 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <p className="text-xl font-bold">
-            Grade<span className="text-accent-light">Spot</span>
-          </p>
-          <p className="mt-3 text-sm text-white/70">
-            Cybersecurity training institute and IT solutions company in
-            Hyderabad.
+          <Link href="/" className="flex items-center gap-2.5" aria-label="GradeSpot home">
+            <span className="grid h-[34px] w-[34px] place-items-center rounded-[9px] bg-brand font-display text-[17px] font-extrabold text-white">
+              G
+            </span>
+            <span className="font-display text-[21px] font-extrabold text-ink">
+              {BRAND.short}
+            </span>
+          </Link>
+          <p className="mt-3 text-sm text-ink2">
+            Training institute, IT services company, and institute-automation
+            products — one brand, three audiences. {CONTACT.locality}.
           </p>
           <div className="mt-4 flex gap-3">
-            <a href="#" aria-label="LinkedIn" className="hover:text-accent-light">
+            <a href="#" aria-label="LinkedIn" className="text-ink2 hover:text-brand-ink">
               <LogoLinkedin size={20} />
             </a>
-            <a href="#" aria-label="Instagram" className="hover:text-accent-light">
+            <a href="#" aria-label="Instagram" className="text-ink2 hover:text-brand-ink">
               <LogoInstagram size={20} />
             </a>
-            <a href="#" aria-label="Facebook" className="hover:text-accent-light">
+            <a href="#" aria-label="Facebook" className="text-ink2 hover:text-brand-ink">
               <LogoFacebook size={20} />
             </a>
           </div>
         </div>
-        <nav aria-label="Company">
-          <p className="text-sm font-semibold uppercase tracking-wide text-white/60">
-            Company
+        <nav aria-label="Students">
+          <p className="text-sm font-bold uppercase tracking-wide text-ink">
+            Students
           </p>
-          <ul className="mt-3 space-y-2 text-sm">
+          <ul className="mt-3 space-y-1 text-sm">
             {[
-              { href: "/about", label: "About Us" },
-              { href: "/trainings", label: "Trainings" },
+              { href: "/trainings", label: "Courses & Fees" },
+              { href: "/pricing", label: "Pricing" },
+              { href: "/verify", label: "Verify a Certificate" },
               { href: "/batches", label: "Batches" },
-              { href: "/institutes", label: "For Institutes" },
-              { href: "/resources/blog", label: "Blog" },
-              { href: "/resources/testimonials", label: "Testimonials" },
-              { href: "/resources/faqs", label: "FAQs" },
-              { href: "/verify", label: "Certificate Verification" },
-              { href: "/contact", label: "Contact Us" },
+              { href: "/about", label: "About Us" },
             ].map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="text-white/80 hover:text-accent-light">
+                <Link href={l.href} className="block py-[3px] text-ink2 hover:text-brand-ink">
                   {l.label}
                 </Link>
               </li>
             ))}
           </ul>
         </nav>
-        <nav aria-label="Services">
-          <p className="text-sm font-semibold uppercase tracking-wide text-white/60">
-            Services
+        <nav aria-label="Businesses">
+          <p className="text-sm font-bold uppercase tracking-wide text-ink">
+            Businesses
           </p>
-          <ul className="mt-3 space-y-2 text-sm">
+          <ul className="mt-3 space-y-1 text-sm">
             {SERVICES.map((s) => (
               <li key={s.slug}>
                 <Link
                   href={`/services/${s.slug}`}
-                  className="text-white/80 hover:text-accent-light"
+                  className="block py-[3px] text-ink2 hover:text-brand-ink"
                 >
                   {s.title}
                 </Link>
@@ -68,33 +70,61 @@ export function Footer() {
             ))}
           </ul>
         </nav>
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-wide text-white/60">
-            Contact
+        <nav aria-label="For Institutes">
+          <p className="text-sm font-bold uppercase tracking-wide text-ink">
+            For Institutes
           </p>
-          <ul className="mt-3 space-y-2 text-sm text-white/80">
-            <li>{CONTACT.address}</li>
-            <li>
-              <a href={CONTACT.phoneHref} className="hover:text-accent-light">
-                {CONTACT.phone}
-              </a>
-            </li>
-            <li>
-              <a
-                href={`mailto:${CONTACT.email}`}
-                className="hover:text-accent-light"
-              >
-                {CONTACT.email}
-              </a>
-            </li>
-            <li>{CONTACT.hours}</li>
+          <ul className="mt-3 space-y-1 text-sm">
+            {[
+              { href: "/institutes", label: "WhatsApp Lead Automation" },
+              { href: "/institutes", label: "Video LMS" },
+              { href: "/institutes", label: "Lab Setup" },
+              { href: "/sitemap", label: "Site Map" },
+              { href: "/research", label: "Research" },
+            ].map((l) => (
+              <li key={l.label}>
+                <Link href={l.href} className="block py-[3px] text-ink2 hover:text-brand-ink">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
           </ul>
-        </div>
+        </nav>
       </div>
-      <div className="border-t border-white/10">
-        <div className="container-brand flex flex-wrap items-center justify-between gap-2 py-4 text-xs text-white/60">
-          <p>© 2026 GradeSpot IT Solutions. All rights reserved.</p>
-          <p>[Pending: privacy policy & terms links]</p>
+
+      <div className="border-t border-line">
+        <div className="container-brand grid gap-4 py-6 text-sm text-ink2 md:grid-cols-2">
+          <div>
+            <p className="font-bold text-ink">Get in touch</p>
+            <ul className="mt-2 space-y-1">
+              <li>
+                <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>
+                {" · "}
+                <a href={CONTACT.phone2Href}>{CONTACT.phone2}</a>
+              </li>
+              <li>
+                <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+                {" · "}
+                <a href={`mailto:${CONTACT.email2}`}>{CONTACT.email2}</a>
+              </li>
+              <li>{CONTACT.address}</li>
+              <li>Office hours {CONTACT.hours}</li>
+            </ul>
+          </div>
+          <div className="flex flex-col justify-between gap-3 md:items-end">
+            <a
+              href={CONTACT.whatsapp}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-2 rounded-button bg-wa px-5 py-2.5 text-[15px] font-bold text-white hover:brightness-95"
+            >
+              Chat on WhatsApp
+            </a>
+            <p className="text-[13px] text-ink3">
+              © 2026 GradeSpot IT Solutions. All rights reserved. [Pending:
+              privacy policy &amp; terms links]
+            </p>
+          </div>
         </div>
       </div>
     </footer>

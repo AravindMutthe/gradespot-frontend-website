@@ -41,10 +41,10 @@ export function LeadForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-card border border-primary/30 bg-primary/5 p-8 text-center">
-        <CheckmarkFilled size={32} className="mx-auto text-primary" />
-        <h3 className="mt-3 text-xl font-bold text-dark">Enquiry received</h3>
-        <p className="mt-2 text-sm text-muted">
+      <div className="rounded-card border border-brand/30 bg-brand/5 p-8 text-center">
+        <CheckmarkFilled size={32} className="mx-auto text-brand-ink" />
+        <h3 className="mt-3 text-xl font-bold text-ink">Enquiry received</h3>
+        <p className="mt-2 text-sm text-ink3">
           Our counsellor will call you shortly. (Lead pipeline wiring lands
           in Phase 3 — this submission was validated locally and nothing was
           sent yet.)
@@ -86,13 +86,13 @@ export function LeadForm() {
       <div>
         <label
           htmlFor="courseInterest"
-          className="mb-1.5 block text-sm font-medium text-dark"
+          className="mb-1.5 block text-sm font-medium text-ink"
         >
           I&apos;m interested in
         </label>
         <select
           id="courseInterest"
-          className="w-full rounded-button border border-muted/40 bg-surface px-4 py-2.5 text-dark focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+          className="w-full rounded-button border border-line/40 bg-panel px-4 py-2.5 text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
           {...register("courseInterest")}
         >
           {(
@@ -113,7 +113,7 @@ export function LeadForm() {
         )}
       </div>
       <fieldset>
-        <legend className="mb-1.5 text-sm font-medium text-dark">
+        <legend className="mb-1.5 text-sm font-medium text-ink">
           Preferred mode
         </legend>
         <div className="flex gap-4">
@@ -122,14 +122,14 @@ export function LeadForm() {
           ).map(([value, label]) => (
             <label
               key={value}
-              className="inline-flex items-center gap-2 text-sm text-dark"
+              className="inline-flex items-center gap-2 text-sm text-ink"
             >
               <input
                 type="radio"
                 value={value}
                 defaultChecked={value === "offline"}
                 {...register("mode")}
-                className="h-4 w-4 accent-[#0A4D92]"
+                className="h-4 w-4 accent-brand"
               />
               {label}
             </label>
@@ -142,7 +142,7 @@ export function LeadForm() {
       <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
         {isSubmitting ? "Submitting…" : "Request a Callback"}
       </Button>
-      <p className="text-xs text-muted">
+      <p className="text-xs text-ink3">
         By submitting, you agree to be contacted about GradeSpot courses and
         services.
       </p>
